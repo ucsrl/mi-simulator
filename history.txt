@@ -1,0 +1,31 @@
+Version 1.10 vom 05.03.2021 (Martin Desharnais)
+    Fehlerbehebungen
+        - Die opcode-Generierung fÃ¼r den XOR-Befehl war inkorrekt.
+
+Version 1.09 vom 04.12.2013 (Mark Minas)
+    Fehlerbehebungen
+        - Fehler in Kelleradressierung bei Bytebefehlen behoben
+    
+Version 1.08 vom 01.12.2012 (Matthias Oehme)
+	Neuerungen
+		- Dateien können nun auch per Drag&Drop geöffnet werden
+		- Einführung von Tastenkürzeln
+		- Eingabefeld wurde erweitert um die Mäglichkeit änderungen Rückgängig zu machen. (BETA)
+		
+	
+	Fehlerbehebungen
+		- Breakpoints wurden nicht neugeladen nach assemblieren
+	
+	sonstiges
+		- Verbesserung des Labelberechnungsalgorithmus
+
+Version 1.07 vom 01.03.2012 (Matthias Oehme)
+	Neuerungen
+		- Abschaltung von Syntaxhighlighting über Menü
+		- Anzeigen eines Fensters mit Label und Labeladressen
+	
+	Fehlerbehebungen
+		- keine
+	
+	sonstiges
+		- Verbesserung des Labelberechnungsalgorithmus
