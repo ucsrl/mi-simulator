@@ -71,7 +71,7 @@ public class Jump extends Command {
      */
     @Override
     public MyByte[] getOpCode() {
-        MyByte opcode = new MyByte((typ > 8 ? 141 : 233) + typ);
+        MyByte opcode = new MyByte((typ > 8 ? 142 : 233) + typ);
         ;
 
         int x = 1;

@@ -1360,7 +1360,7 @@ public class Interpreter {
             return null;
         }
 
-        return new Jump(0, adress, one, 9, 0, 0);
+        return new Jump(0, adress, one, 10, 0, 0);
     }
 
     /**
@@ -1378,7 +1378,7 @@ public class Interpreter {
             return null;
         }
 
-        return new Jump(0, adress, one, 10, 0, 0);
+        return new Jump(0, adress, one, 9, 0, 0);
     }
 
     /**
