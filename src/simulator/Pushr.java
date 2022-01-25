@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package simulator;
 
@@ -11,14 +11,14 @@ import gui.CONSTANTS;
 
 /**
  * Pushr-Befehl
- * 
+ *
  * @author Matthias Oehme
  */
 public class Pushr extends Command {
 
     /**
-     * Konstruktor 
-     * 
+     * Konstruktor
+     *
      * @param line
      *            Zeile im Quelltext
      * @param adress
@@ -29,52 +29,50 @@ public class Pushr extends Command {
      *            Zeichenposition - Ende des Befehlswortes im Quelltext
      */
     public Pushr(int line, int adress, int length, int beg, int end) {
-	super(line, adress, beg, end);
+        super(line, adress, beg, end);
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see compiler.Command#getOpCode()
      */
     @Override
     public MyByte[] getOpCode() {
-	MyByte opcode = new MyByte("F4");
+        MyByte opcode = new MyByte("F4");
 
-	return new MyByte[] { opcode };
+        return new MyByte[]{opcode};
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see compiler.Command#run()
      */
     @Override
     public synchronized void run() {
-	super.run();
-	Register sp = Enviroment.REGISTERS.getRegister(CONSTANTS.SP_REGISTER);
-	for (int i = 14; i >= 0; i--) {
-	    Register reg = Enviroment.REGISTERS.getRegister(i);
-	    sp.setContent(NumberConversion.intToByte(
-		    NumberConversion.myBytetoIntWithoutSign(sp.getContent(4)) - 4,
-		    4));
-	    AbsAddress ort = new AbsAddress(
-		    NumberConversion.myBytetoIntWithoutSign(sp.getContent(4)),
-		    4, 0);
-	    ort.setContent(reg.getContent(4), 4);
-	}
+        super.run();
+        Register sp = Enviroment.REGISTERS.getRegister(CONSTANTS.SP_REGISTER);
+        for (int i = 14; i >= 0; i--) {
+            Register reg = Enviroment.REGISTERS.getRegister(i);
+            sp.setContent(NumberConversion.intToByte(
+                    NumberConversion.myBytetoIntWithoutSign(sp.getContent(4)) - 4, 4));
+            AbsAddress ort = new AbsAddress(
+                    NumberConversion.myBytetoIntWithoutSign(sp.getContent(4)), 4, 0);
+            ort.setContent(reg.getContent(4), 4);
+        }
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-	return "PUSHR";
+        return "PUSHR";
     }
 }

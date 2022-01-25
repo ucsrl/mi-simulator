@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package simulator;
 
@@ -10,14 +10,14 @@ import gui.CONSTANTS;
 
 /**
  * Halt-Befehl
- * 
+ *
  * @author Matthias Oehme
  */
 public class Halt extends Command {
 
     /**
-     * Konstruktor 
-     * 
+     * Konstruktor
+     *
      * @param line
      *            Zeile im Quelltext
      * @param adress
@@ -28,41 +28,41 @@ public class Halt extends Command {
      *            Zeichenposition - Ende des Befehlswortes im Quelltext
      */
     public Halt(int line, int adress, int beg, int end) {
-	super(line, adress, beg, end);
+        super(line, adress, beg, end);
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see compiler.Command#getOpCode()
      */
     @Override
     public MyByte[] getOpCode() {
-	MyByte opcode = new MyByte(0);
+        MyByte opcode = new MyByte(0);
 
-	return new MyByte[] { opcode };
+        return new MyByte[]{opcode};
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see compiler.Command#run()
      */
     @Override
     public synchronized void run() {
-	Enviroment.REGISTERS.getRegister(CONSTANTS.PC_REGISTER).setContent(
-		NumberConversion.intToByte(adress, 4));
+        Enviroment.REGISTERS.getRegister(CONSTANTS.PC_REGISTER)
+                .setContent(NumberConversion.intToByte(adress, 4));
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-	return "HALT";
+        return "HALT";
     }
 }

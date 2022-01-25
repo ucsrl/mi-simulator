@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package Exceptions;
 
@@ -10,7 +10,7 @@ package Exceptions;
 public class OperandNotParsableException extends Exception {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
 

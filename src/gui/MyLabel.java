@@ -1,18 +1,16 @@
 /**
- * 
+ *
  */
 package gui;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import Exceptions.NoCommandException;
-
 import enviroment.Enviroment;
 
+import javax.swing.*;
+
 /**
- * The Class MyLabel.Die Klasse repräsentiert ein Label, welches Klickbar ist 
+ * The Class MyLabel.Die Klasse repräsentiert ein Label, welches Klickbar ist
+ *
  * @author Matthias Oehme
  */
 public class MyLabel extends JLabel {
@@ -28,7 +26,7 @@ public class MyLabel extends JLabel {
 
     /**
      * Instaziiert ein neues Label
-     * 
+     *
      * @param name
      *            Name des Label
      * @param icon1
@@ -37,52 +35,48 @@ public class MyLabel extends JLabel {
      *            Icon2
      */
     public MyLabel(String name, ImageIcon icon1, ImageIcon icon2) {
-	super(name);
-	setOpaque(true);
-	this.icon1 = icon1;
-	this.icon2 = icon2;
-	setIcon(icon2);
+        super(name);
+        setOpaque(true);
+        this.icon1 = icon1;
+        this.icon2 = icon2;
+        setIcon(icon2);
     }
 
     /**
      * Gibt den Status zurueck
-     * 
+     *
      * @return Status
      */
     public boolean getStatus() {
-	return status;
+        return status;
     }
 
     /**
      * Setzt den Breakpoint zurueck
      */
     public void reset() {
-	status = false;
-	setIcon(icon2);
+        status = false;
+        setIcon(icon2);
     }
 
     /**
      * Setzt den Status und ändert das Icon, falls erforderlich
-     * 
+     *
      * @param status
      *            neuer Status
      */
     public void setStatus(boolean status) {
-	this.status = status;
-	try {
-	    Enviroment.getProgram().setBreakPoint(Integer.parseInt(getText()),
-		    status);
-	    setText(getText());
-	    setIcon(status ? icon1 : icon2);
-	} catch (NoCommandException e) {
-	    JOptionPane
-		    .showMessageDialog(
-			    Enviroment.frame,
-			    CONSTANTS.ERROR_SETBREAKPOINT_NOT_EXECUTABLE_INSTR,
-			    CONSTANTS.ERROR_SETBREAKPOINT_TITEL,
-			    JOptionPane.ERROR_MESSAGE);
-	}
-
+        this.status = status;
+        try {
+            Enviroment.getProgram().setBreakPoint(Integer.parseInt(getText()), status);
+            setText(getText());
+            setIcon(status ? icon1 : icon2);
+        } catch (NoCommandException e) {
+            JOptionPane.showMessageDialog(Enviroment.frame,
+                    CONSTANTS.ERROR_SETBREAKPOINT_NOT_EXECUTABLE_INSTR,
+                    CONSTANTS.ERROR_SETBREAKPOINT_TITEL,
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 

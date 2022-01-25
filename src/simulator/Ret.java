@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package simulator;
 
@@ -11,14 +11,14 @@ import gui.CONSTANTS;
 
 /**
  * Ret-Befehl
- * 
+ *
  * @author Matthias Oehme
  */
 public class Ret extends Command {
 
     /**
-     * Konstruktor 
-     * 
+     * Konstruktor
+     *
      * @param line
      *            Zeile im Quelltext
      * @param adress
@@ -29,47 +29,46 @@ public class Ret extends Command {
      *            Zeichenposition - Ende des Befehlswortes im Quelltext
      */
     public Ret(int line, int adress, int beg, int end) {
-	super(line, adress, beg, end);
+        super(line, adress, beg, end);
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see compiler.Command#getOpCode()
      */
     @Override
     public MyByte[] getOpCode() {
-	MyByte opcode = new MyByte("F3");
+        MyByte opcode = new MyByte("F3");
 
-	return new MyByte[] { opcode };
+        return new MyByte[]{opcode};
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see compiler.Command#run()
      */
     @Override
     public synchronized void run() {
-	CellarAddressing sp = new CellarAddressing(CONSTANTS.SP_REGISTER, 4, 4,
-		true);
-	Register pc = Enviroment.REGISTERS.getRegister(CONSTANTS.PC_REGISTER);
-	int ziel = NumberConversion.myBytetoIntWithSign(sp.getContent());
-	pc.setContent(NumberConversion.intToByte(ziel, 4));
-	// Enviroment.setNextCommand(Enviroment.getCommand(ziel));
+        CellarAddressing sp = new CellarAddressing(CONSTANTS.SP_REGISTER, 4, 4, true);
+        Register pc = Enviroment.REGISTERS.getRegister(CONSTANTS.PC_REGISTER);
+        int ziel = NumberConversion.myBytetoIntWithSign(sp.getContent());
+        pc.setContent(NumberConversion.intToByte(ziel, 4));
+        // Enviroment.setNextCommand(Enviroment.getCommand(ziel));
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-	return "RET";
+        return "RET";
     }
 
 }

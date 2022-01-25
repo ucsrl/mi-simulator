@@ -1,15 +1,14 @@
 /**
- * 
+ *
  */
 package scanner;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 /**
  * Diese Klasse wird für dier Verwaltung von der Compileroption Equal verwendet
- * 
+ *
  * @author Matthias Oehme
  */
 public class Equal {
@@ -22,32 +21,32 @@ public class Equal {
 
     /**
      * Konstruktor für ein neues Equal
-     * 
+     *
      * @param name
      *            Ersetzungsname
      * @param makro
      *            Tokenliste für die Ersetzung
      */
     public Equal(String name, ArrayList<Token> makro) {
-	this.name = name;
-	this.makro = makro;
+        this.name = name;
+        this.makro = makro;
     }
 
     /**
      * gibt einen Iterator zurück
-     * 
+     *
      * @return the iterator
      */
     public Iterator<Token> getIterator() {
-	return makro.iterator();
+        return makro.iterator();
     }
 
     /**
      * Gibt den Namen zurück
-     * 
+     *
      * @return Name
      */
     public String getName() {
-	return name;
+        return name;
     }
 }
