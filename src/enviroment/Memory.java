@@ -1,5 +1,11 @@
 package enviroment;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.*;
+
 import gui.CONSTANTS;
 import gui.MemoryTable;
 import gui.MemoryTableEntry;
@@ -35,7 +41,7 @@ public class Memory {
     /**
      * Liste geänderter Speicherzellen
      */
-    private ArrayList<MyByte> new_list = new ArrayList<MyByte>();
+    private Map<Integer, MyByte> changedCells = new HashMap<>();
 
     /**
      * Konstrktur für den Speicher.
@@ -224,10 +230,11 @@ public class Memory {
      * Setzt den Speicher zurueck auf Grundlage der geaenderten Speicherzellen
      */
     public void reset() {
-        for (MyByte in : new_list) {
-            in.setContent(0);
+        for (MyByte value : changedCells.values()) {
+            value.setContent(0);
         }
-        new_list = new ArrayList<MyByte>();
+
+        changedCells = new HashMap<>();
     }
 
     /**
@@ -248,10 +255,11 @@ public class Memory {
         }
 
         for (int i = 0; i < content.length; i++) {
-            memory[begin + i].setContent(content[i].getContent()); // new
+            int address = begin + i;
+            memory[address].setContent(content[i].getContent()); // new
             // MyByte(content[i].getContent());
-            changed_list.add(memory[begin + i]);
-            new_list.add(memory[begin + i]);
+            changed_list.add(memory[address]);
+            changedCells.put(address, memory[address]);
         }
 
     }
@@ -263,4 +271,7 @@ public class Memory {
         changed_list = new ArrayList<MyByte>();
     }
 
+    public Map<Integer, MyByte> getChanges() {
+        return changedCells;
+    }
 }
