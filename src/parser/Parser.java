@@ -991,7 +991,8 @@ public class Parser {
                                                                     offset,
                                                                     reg,
                                                                     index,
-                                                                    length));
+                                                                    length,
+                                                                    0));
                                                     ret = scanner.getNextSymbol();
 
                                                 } else {

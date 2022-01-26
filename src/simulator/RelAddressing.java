@@ -217,10 +217,14 @@ public class RelAddressing implements Operand, AdressGetter {
      */
     @Override
     public String toString() {
-        return (offset != 0 ? Integer.toString(offset) + " + " + "!R" : " " + "!R")
-                + Integer.toString(nr1) + (nr2 != -1 ?
-                "/R" + Integer.toString(nr2) + "/" :
-                "");
+        StringBuilder builder = new StringBuilder();
+        builder.append(offset != 0 ? offset + " + " : " ");
+        builder.append("!R");
+        builder.append(nr1);
+        if (nr2 != -1) {
+            builder.append("/R").append(nr2).append("/");
+        }
+        return builder.toString();
     }
 
 }

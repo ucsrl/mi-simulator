@@ -133,12 +133,13 @@ public class Main {
     }
 
     private static boolean assembleAndLoad(String programText) {
+        Enviroment.init();
         Scanner scanner = new Scanner(false);
         scanner.init(programText);
         Parser parser = new Parser(scanner);
         parser.start();
         if (!parser.eval()) {
-            System.err.println(parser.getErrorMeassge());
+            System.err.println(parser.getErrorMeassge().getErrorMessage());
             return false;
         }
         Program program = parser.getProgramm();
@@ -148,7 +149,6 @@ public class Main {
             return false;
         }
         System.out.println(CONSTANTS.ASSEMBLE_SUCCESSFUL);
-        Enviroment.init();
         Enviroment.setProgram(program);
         Enviroment.MEMORY.setContent(0, program.getOpCode());
         return true;
