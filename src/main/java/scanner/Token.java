@@ -1,7 +1,7 @@
 package scanner;
 
 /**
- * Diese Klasse repräsentier ein erkanntes Token / Symbol
+ * Diese Klasse reprĂ¤sentier ein erkanntes Token / Symbol
  *
  * @author Matthias Oehme
  */

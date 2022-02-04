@@ -62,6 +62,7 @@ public class CONSTANTS {
     public final static int SP_REGISTER = 14; // Stackpointer
     public final static int PC_REGISTER = 15; // Programcounter
     public final static int NUMBER_OF_REGISTER = 16; // Sollte nicht verändert
+    public final static int WORD_SIZE = 4;
     // werden, da die Opcodes
     // auf 16 Register
     // ausgelegt sind

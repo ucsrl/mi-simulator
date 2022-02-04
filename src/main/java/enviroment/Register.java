@@ -2,9 +2,6 @@ package enviroment;
 
 import gui.CONSTANTS;
 
-import javax.swing.*;
-import java.awt.*;
-
 /**
  * Diese Klasse repaesentier ein Register der MI
  */
@@ -19,11 +16,6 @@ public class Register {
      * Stackregister?
      */
     private boolean isStack = false;
-
-    /**
-     * Darstellung des Registers
-     */
-    private JTextField tfield = new JTextField("0", 15);
 
     /**
      * Registernr
@@ -42,9 +34,6 @@ public class Register {
      */
     public Register(int nr) {
         content = NumberConversion.intToByte(0, 4);
-        tfield.setFont(CONSTANTS.FONT);
-        tfield.setHorizontalAlignment(SwingConstants.RIGHT);
-        tfield.setFocusable(false);
         this.nr = nr;
     }
 
@@ -114,43 +103,6 @@ public class Register {
     }
 
     /**
-     * Gibt die Registerdarstellung zurueck
-     *
-     * @param regview Art der Darstellung
-     * @return Registerdarstellung
-     */
-    public JTextField getTextField(int regview) {
-        String text = "";
-        switch (regview) {
-            case 0:
-                text = Integer.toString(NumberConversion.myBytetoIntWithSign(content));
-                break;
-            case 1:
-                text = NumberConversion.myBytetoBin(content);
-                break;
-            case 2:
-                text = NumberConversion.myBytetoHex(content);
-                break;
-            case 3:
-
-                Float zahl = Float.intBitsToFloat(
-                        NumberConversion.myBytetoIntWithoutSign(content));
-                text = Float.toString(Float.intBitsToFloat(
-                        NumberConversion.myBytetoIntWithoutSign(content)));
-                if (zahl.isNaN()) {
-                    text = "NaN";
-                }
-                break;
-        }
-        tfield.setText(text);
-        tfield.setForeground(changed ? Color.red : Color.black);
-        if (text.length() > 10) {
-            tfield.setToolTipText(text);
-        }
-        return tfield;
-    }
-
-    /**
      * Setzt den Inhalt eines Registers
      *
      * @param content Inhalt
@@ -189,33 +141,13 @@ public class Register {
     }
 
     /**
-     * Aktualisiert die Registerdarstellung
-     *
-     * @param regview Registerdarstellung
-     */
-    public void update(int regview) {
-        String text = "";
-        switch (regview) {
-            case 0:
-                text = Integer.toString(NumberConversion.myBytetoIntWithSign(content));
-                break;
-            case 1:
-                text = NumberConversion.myBytetoBin(content);
-                break;
-            case 2:
-                text = NumberConversion.myBytetoHex(content);
-                break;
-        }
-        tfield.setText(text);
-        tfield.setToolTipText(text.length() > 15 ? text : "");
-
-    }
-
-    /**
      * Setzt den Änderungsstatus eines Register zurück
      */
     public void reset() {
         changed = false;
     }
 
+    public boolean isChanged() {
+        return changed;
+    }
 }

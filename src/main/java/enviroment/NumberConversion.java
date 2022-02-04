@@ -279,25 +279,25 @@ public class NumberConversion {
             pre += "1";
         }
         neu = pre + neu;
-        boolean übertrag = true;
+        boolean carry = true;
         String erg = "";
         for (int i = (neu.length() - 1); i >= 0; i--) {
             switch (neu.getBytes()[i]) {
                 case '0':
-                    if (übertrag) {
+                    if (carry) {
                         erg = "1" + erg;
                     } else {
                         erg = "0" + erg;
                     }
-                    übertrag = false;
+                    carry = false;
                     break;
                 case '1':
-                    if (übertrag) {
+                    if (carry) {
                         erg = "0" + erg;
-                        übertrag = true;
+                        carry = true;
                     } else {
                         erg = "1" + erg;
-                        übertrag = false;
+                        carry = false;
                     }
 
                     break;

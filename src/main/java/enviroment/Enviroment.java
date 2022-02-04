@@ -1,10 +1,7 @@
 package enviroment;
 
 import codegenerator.Program;
-import gui.CONSTANTS;
-import gui.HighlightedJPane;
-import gui.LabelWindow;
-import gui.Window;
+import gui.*;
 import interpreter.Interpreter;
 import simulator.Command;
 
@@ -43,7 +40,7 @@ public class Enviroment {
     /**
      * Art der Registerdarstellung
      */
-    public static int REGVIEW = 0;
+    public static RegisterViewType REGVIEW = RegisterViewType.DECIMAL;
 
     /**
      * Das Anzeigefenster
@@ -63,6 +60,8 @@ public class Enviroment {
     public static boolean shl = true;
 
     public static boolean label_Window = false;
+
+    public static boolean showLeadingZeros = true;
 
     /**
      * Der nächste Befehl
@@ -222,7 +221,7 @@ public class Enviroment {
      *
      * @param regview Registerdarstellung
      */
-    public static void setRegView(int regview) {
+    public static void setRegView(RegisterViewType regview) {
         REGVIEW = regview;
     }
 

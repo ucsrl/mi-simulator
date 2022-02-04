@@ -188,12 +188,12 @@ public class Window extends javax.swing.JFrame {
     /**
      * The register_panel.
      */
-    private JPanel register_panel;
+    private RegistersPanel registerPanel;
 
     /**
      * The memory_panel.
      */
-    private JPanel memory_panel;
+    private JPanel memoryPanel;
 
     /**
      * The flag_panel.
@@ -223,7 +223,7 @@ public class Window extends javax.swing.JFrame {
     /**
      * The center_panel.
      */
-    private JPanel center_panel;
+    private JPanel codePanel;
 
     /**
      * Quelltexteingabefeld
@@ -309,7 +309,7 @@ public class Window extends javax.swing.JFrame {
         fc.setFileFilter(new FileNameExtensionFilter("MI-File", "mi"));
 
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        center_panel = new JPanel();
+        codePanel = new JPanel();
         button_panel = new JPanel();
         button_panel.setLayout(new FlowLayout(10));
         ober_panel = new JPanel();
@@ -322,16 +322,14 @@ public class Window extends javax.swing.JFrame {
 
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        center_panel.setLayout(new BoxLayout(center_panel, BoxLayout.Y_AXIS));
+        codePanel.setLayout(new BoxLayout(codePanel, BoxLayout.Y_AXIS));
         setTitle(CONSTANTS.TITLE + " - unbenannt.mi");
         Enviroment.setJFrame(this);
         Enviroment.init();
 
-        {
-            memory_panel = new JPanel();
-            memory_panel.setLayout(new BoxLayout(memory_panel, BoxLayout.Y_AXIS));
+        memoryPanel = new JPanel();
+        memoryPanel.setLayout(new BoxLayout(memoryPanel, BoxLayout.Y_AXIS));
 
-        }
 
         {
             input_panel = new JPanel();
@@ -339,7 +337,7 @@ public class Window extends javax.swing.JFrame {
             numberedPane = new NumberedPane();
             input_panel.add(numberedPane, BorderLayout.WEST);
             input_panel.add(numberedPane.scrollPane, BorderLayout.CENTER);
-            center_panel.add(input_panel);
+            codePanel.add(input_panel);
             text = numberedPane.getTextPane();
             Enviroment.setText(text);
 
@@ -397,13 +395,10 @@ public class Window extends javax.swing.JFrame {
 
         }
         {
-            register_panel = new JPanel();
-            register_panel.setLayout(new BoxLayout(register_panel, BoxLayout.Y_AXIS));
-            register = Enviroment.REGISTERS.getJScrollPane();
-            register_panel.add(register);
-            ober_panel.add(register_panel);
-            ober_panel.add(center_panel);
-            ober_panel.add(memory_panel);
+            registerPanel = new RegistersPanel();
+            ober_panel.add(registerPanel);
+            ober_panel.add(codePanel);
+            ober_panel.add(memoryPanel);
 
         }
         {
@@ -528,7 +523,6 @@ public class Window extends javax.swing.JFrame {
                                 btnRestart);
                         run.start();
 
-                        register = Enviroment.REGISTERS.getJScrollPane();
                         memory = Enviroment.MEMORY.getMemoryTable();
                     }
                 });
@@ -602,7 +596,7 @@ public class Window extends javax.swing.JFrame {
         }
 
         flag_panel = new JPanel();
-        center_panel.add(flag_panel);
+        codePanel.add(flag_panel);
         JPopupMenu.setDefaultLightWeightPopupEnabled(false);
         jMenuBar1 = new JMenuBar();
         setJMenuBar(jMenuBar1);
@@ -843,6 +837,20 @@ public class Window extends javax.swing.JFrame {
                 });
                 settings_menu.add(label_windowMenuItem);
                 label_windowMenuItem.setText("Fenster mit Labeladressen");
+
+                JCheckBoxMenuItem showLeadingZerosItem = new JCheckBoxMenuItem();
+                showLeadingZerosItem.setSelected(false);
+
+                showLeadingZerosItem.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Enviroment.showLeadingZeros = showLeadingZerosItem.getState();
+                        Enviroment.frame.updateUI();
+                    }
+                });
+                settings_menu.add(showLeadingZerosItem);
+                showLeadingZerosItem.setText("Führende Nullen anzeigen");
+                showLeadingZerosItem.setState(Enviroment.showLeadingZeros);
             }
         }
 
@@ -975,14 +983,12 @@ public class Window extends javax.swing.JFrame {
             btnStep.setEnabled(false);
         }
 
-        Enviroment.REGISTERS.update();
+        registerPanel.updateRegisterValues();
+
         Enviroment.flags.update();
 
         int val = (memory == null) ? 0 : memory.getVerticalScrollBar().getValue();
         int val2 = (stack == null) ? 0 : stack.getVerticalScrollBar().getValue();
-        register_panel.removeAll();
-        register = Enviroment.REGISTERS.getJScrollPane();
-        register_panel.add(register);
         flag = Enviroment.flags.getFlags();
 
         JPanel instr_panel = new JPanel();
@@ -1005,7 +1011,7 @@ public class Window extends javax.swing.JFrame {
 
         text.highlightNextCommand();
 
-        memory_panel.removeAll();
+        memoryPanel.removeAll();
         memory = Enviroment.MEMORY.getMemoryTable();
         memory.setSize(CONSTANTS.MEMORY_WIDTH, CONSTANTS.MEMORY_HEIGHT);
         memory.getVerticalScrollBar().setValue(val);
@@ -1014,8 +1020,8 @@ public class Window extends javax.swing.JFrame {
         stack.setSize(CONSTANTS.STACK_WIDTH, CONSTANTS.STACK_HEIGHT);
         stack.getVerticalScrollBar().setValue(val2);
         stack.getVerticalScrollBar().setValue(val2);
-        memory_panel.add("Speicher", memory);
-        memory_panel.add("Stack", stack);
+        memoryPanel.add("Speicher", memory);
+        memoryPanel.add("Stack", stack);
         validate();
         this.repaint();
 
