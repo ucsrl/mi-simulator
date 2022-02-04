@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'de.unibw.mnp'
+version '1.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.2'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'ISO-8859-1'
+}
+
+ext {
+    javaMainClass = "gui.Main"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "gui.Main"
+    }
+}
+
+tasks.register('cli-jar', Jar) {
+    manifest {
+        attributes["Main-Class"] = "cli.Main"
+    }
+    archivesBaseName = 'mi-simulator-cli'
+    group = 'build'
+}

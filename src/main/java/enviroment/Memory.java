@@ -1,17 +1,13 @@
 package enviroment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.*;
-
 import gui.CONSTANTS;
 import gui.MemoryTable;
 import gui.MemoryTableEntry;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert den Speicher der MI
