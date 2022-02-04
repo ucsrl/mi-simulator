@@ -9,7 +9,7 @@ import enviroment.MyByte;
 import java.util.ArrayList;
 
 /**
- * Diese Klasse repräsentiert einen Speicherzeileneintag
+ * Diese Klasse reprÃ¤sentiert einen Speicherzeileneintag
  *
  * @author Cyberdyne
  */
@@ -22,12 +22,10 @@ public class MemoryTableEntry {
     String adr;
 
     /**
-     * Konstruktor für einen Speicherzelleneintrag
+     * Konstruktor fÃ¼r einen Speicherzelleneintrag
      *
-     * @param data
-     *            Daten der Speicherzelle
-     * @param adr
-     *            the adr
+     * @param data Daten der Speicherzelle
+     * @param adr  the adr
      */
     public MemoryTableEntry(ArrayList<MyByte> data, String adr) {
         this.data = data;
@@ -38,7 +36,7 @@ public class MemoryTableEntry {
      * Setzt die Daten der Speicherzellen
      *
      * @param data
-     *            geänderte Daten
+     *            geÃ¤nderte Daten
      */
     public void setData(ArrayList<MyByte> data) {
         this.data = data;

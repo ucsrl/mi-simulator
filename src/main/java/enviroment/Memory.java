@@ -30,17 +30,17 @@ public class Memory {
     private ArrayList<MemoryTableEntry> data;
 
     /**
-     * Liste der Speicherzellen, die rit gef‰rbt werden sollen
+     * Liste der Speicherzellen, die rit gef√§rbt werden sollen
      */
     private ArrayList<MyByte> changed_list = new ArrayList<MyByte>();
 
     /**
-     * Liste ge‰nderter Speicherzellen
+     * Liste ge√§nderter Speicherzellen
      */
     private Map<Integer, MyByte> changedCells = new HashMap<>();
 
     /**
-     * Konstrktur f¸r den Speicher.
+     * Konstrktur f√ºr den Speicher.
      */
     public Memory() {
         for (int i = 0; i < CONSTANTS.MEMORY_LENGTH; i++) {

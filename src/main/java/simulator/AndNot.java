@@ -20,27 +20,35 @@ public class AndNot extends Command {
     /** erster Operand */
     Operand op1;
 
-    /** zweiter Operand */
+    /**
+     * zweiter Operand
+     */
     Operand op2;
 
-    /** dritter Operand */
+    /**
+     * dritter Operand
+     */
     Operand op3;
 
-    /** true, falls es sich um einen 3-Adressbefehl handelt */
+    /**
+     * true, falls es sich um einen 3-Adressbefehl handelt
+     */
     boolean three = false;
 
-    /** Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8 */
+    /**
+     * LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     */
     int length = 0;
 
     /**
-     * Konstruktor für einen 2-Adress ANDNOT-Befehl
+     * Konstruktor fÃ¼r einen 2-Adress ANDNOT-Befehl
      *
      * @param line
      *            Zeile im Quelltext
      * @param adress
      *            Adresse des Befehls
      * @param length
-     *            Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     *            LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
      * @param op1
      *            erster Operand
      * @param op2

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Klasse für den Syntaxscanner
+ * Klasse fÃ¼r den Syntaxscanner
  *
  * @author Nico Krebs und Mattias Oehme
  */
@@ -88,11 +88,11 @@ public class Scanner {
     private int line = 1;
 
     /**
-     * Scannen für Highlighting?
+     * Scannen fÃ¼r Highlighting?
      */
     private boolean highlight;
 
-    // Konstanten für die Verabreitung in weiteren Phasen
+    // Konstanten fÃ¼r die Verabreitung in weiteren Phasen
 
     public final static int TOKEN_NAME = 1;
     public final static int TOKEN_SEG = 2;
@@ -176,7 +176,7 @@ public class Scanner {
     public final static int TOKEN_FEHLER = 100;
 
     public static String[] FEHLER = new String[]{"Fehler beim Scannen",
-            "Fehler beim Parsen einer Binärzahl",
+            "Fehler beim Parsen einer BinÃ¤rzahl",
             "Fehler beim Parsen einer Hexadezimalzahl",
             "Fehler beim Parsen einer Gleitpunktzahl",
             "Fehler beim Parsen eines Strings",
@@ -207,7 +207,7 @@ public class Scanner {
     }
 
     /**
-     * Gibt den Iterator für eine Equal zurück
+     * Gibt den Iterator fÃ¼r eine Equal zurÃ¼ck
      *
      * @param name the name
      * @return TokenIterator
@@ -222,21 +222,21 @@ public class Scanner {
     }
 
     /**
-     * Gibt das nächste erkannte Token zurück
+     * Gibt das nÃ¤chste erkannte Token zurÃ¼ck
      *
      * @return erkanntes Token
      */
     public Token getNextSymbol() {
 
-        // prüfen ob geraden Token für ein Equal zurückgegeben werden
+        // prÃ¼fen ob geraden Token fÃ¼r ein Equal zurÃ¼ckgegeben werden
         if (!highlight && iter != null && iter.hasNext()) {
             return iter.next();
         }
 
         Token ret = getNextSymbol_help();
 
-        // Überspringen von Kommentaren und Leerzeichen bzw. Tabs, falls nicht
-        // für das Highlighten gescannt wird
+        // Ãœberspringen von Kommentaren und Leerzeichen bzw. Tabs, falls nicht
+        // fÃ¼r das Highlighten gescannt wird
         if (!highlight) {
             while (ret.getNr() == TOKEN_SPACE || ret.getNr() == TOKEN_COMMENT) {
                 ret = getNextSymbol_help();
@@ -246,9 +246,9 @@ public class Scanner {
     }
 
     /**
-     * Hilffunktion, die das nächste Token zurück liefert.
+     * Hilffunktion, die das nÃ¤chste Token zurÃ¼ck liefert.
      *
-     * @return nächstes Token
+     * @return nÃ¤chstes Token
      */
     private Token getNextSymbol_help() {
         // System.out.println(input);
@@ -261,7 +261,7 @@ public class Scanner {
 
             // System.out.println("Zeichen:"+ch);
 
-            // neuer Zustand gemäß Übergangstabelle
+            // neuer Zustand gemÃ¤ÃŸ Ãœbergangstabelle
             state = table[state * breite + ch];
             // System.out.println("Status:"+state);
             // System.out.println("Token2:"+token2);
@@ -328,7 +328,7 @@ public class Scanner {
      * @param s the s
      */
     public void init(String s) {
-        // Ersetzungn für SP --> R14 und PC --> R15
+        // Ersetzungn fÃ¼r SP --> R14 und PC --> R15
         ArrayList<Token> sp = new ArrayList<Token>();
         sp.add(new Token(TOKEN_REGISTER, "R" + CONSTANTS.SP_REGISTER, 0, 0, 0));
         addEqual(new Equal("SP", sp));
@@ -336,10 +336,10 @@ public class Scanner {
         sp.add(new Token(TOKEN_REGISTER, "R" + CONSTANTS.PC_REGISTER, 0, 0, 0));
         addEqual(new Equal("PC", sp));
 
-        // Anpassungen der Zeilenumbrüche
+        // Anpassungen der ZeilenumbrÃ¼che
         input = s.replaceAll("\r", "");
 
-        // Hinzufügen eines EOF-Bytes
+        // HinzufÃ¼gen eines EOF-Bytes
         b = (input + " ").getBytes();
         b[b.length - 1] = 0x1A; // EOF
 
@@ -349,7 +349,7 @@ public class Scanner {
         // Tabellenbreite
         breite = 257;
 
-        // letzte Zeile für erkanntes Token
+        // letzte Zeile fÃ¼r erkanntes Token
         zeile = 256;
 
         // Spruch auf Zustand 111 Fehler
@@ -357,7 +357,7 @@ public class Scanner {
             table[breite + j] = 111;
         }
 
-        // Initalitsierung für den Zustand Name == 106
+        // Initalitsierung fÃ¼r den Zustand Name == 106
         for (int i = 1; i < 71; i++) {
             for (int j = 'A'; j <= 'Z'; j++) {
                 table[i * breite + j] = 106;
@@ -432,18 +432,18 @@ public class Scanner {
         table[76 * breite + '_'] = 106;
         table[110 * breite + '_'] = 106;
 
-        // Initialisierung für String
+        // Initialisierung fÃ¼r String
         for (int j = 0; j <= 255; j++) {
             table[85 * breite + j] = 86;
             table[86 * breite + j] = 86;
         }
 
-        // Initialisierung für Kommentar
+        // Initialisierung fÃ¼r Kommentar
         for (int j = 0; j <= 255; j++) {
             table[88 * breite + j] = 88;
         }
 
-        // Initalisierung für Bereich HexZahl
+        // Initalisierung fÃ¼r Bereich HexZahl
 
         for (int j = 'A'; j <= 'F'; j++) {
             table[77 * breite + j] = 78;
@@ -455,7 +455,7 @@ public class Scanner {
             table[78 * breite + j] = 78;
         }
 
-        // Initalisierung für Bereich Zahl
+        // Initalisierung fÃ¼r Bereich Zahl
 
         for (int j = '0'; j <= '9'; j++) {
             table[1 * breite + j] = 71;
@@ -464,7 +464,7 @@ public class Scanner {
             table[71 * breite + j] = 71;
         }
 
-        // Initalisierung für Bereich Float
+        // Initalisierung fÃ¼r Bereich Float
 
         for (int j = '0'; j <= '9'; j++) {
             table[80 * breite + j] = 81;
@@ -920,18 +920,18 @@ public class Scanner {
         // Zeile 73
         table[pos + '0'] = 74;
         table[pos + '1'] = 74;
-        table[pos + zeile] = 101; // Fehler beim Parsen einer Binärzahl
+        table[pos + zeile] = 101; // Fehler beim Parsen einer BinÃ¤rzahl
         pos += breite;
 
         // Zeile 74
         table[pos + 39] = 75;
         table[pos + '0'] = 74;
         table[pos + '1'] = 74;
-        table[pos + zeile] = 101; // Fehler beim Parsen einer Binärzahl
+        table[pos + zeile] = 101; // Fehler beim Parsen einer BinÃ¤rzahl
         pos += breite;
 
         // Zeile 75
-        table[pos + zeile] = TOKEN_BIN; // Binärzahl
+        table[pos + zeile] = TOKEN_BIN; // BinÃ¤rzahl
         pos += breite;
 
         // Zeile 76
@@ -1103,7 +1103,7 @@ public class Scanner {
         pos += breite;
 
         // Zeile 111
-        table[pos + zeile] = 101; // Fehler - ungültiges Zeichen
+        table[pos + zeile] = 101; // Fehler - ungÃ¼ltiges Zeichen
         pos += breite;
 
         // Zeile 112

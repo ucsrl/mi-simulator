@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 import java.net.URL;
 
 /**
- * Die Klasse ist für das Anzeigen eines JTextPane mit Zeilennummern
+ * Die Klasse ist fÃ¼r das Anzeigen eines JTextPane mit Zeilennummern
  *
  * @author Matthias Oehme
  */

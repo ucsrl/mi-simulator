@@ -30,7 +30,7 @@ public class Sh extends Command {
     Operand op3;
 
     /**
-     * Konstruktor für einen Sh-Befehl
+     * Konstruktor fÃ¼r einen Sh-Befehl
      *
      * @param line   Zeile im Quelltext
      * @param adress Adresse des Befehls

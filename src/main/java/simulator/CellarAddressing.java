@@ -7,25 +7,35 @@ import enviroment.MyByte;
 import enviroment.NumberConversion;
 
 /**
- * Operandenspezifikation für die Kelleradressierung
+ * Operandenspezifikation fÃ¼r die Kelleradressierung
  *
  * @author Matthias Oehme
  */
 public class CellarAddressing implements Operand {
 
-    /** Register */
+    /**
+     * Register
+     */
     private RegisterAddressing register;
 
-    /** Länge des Registerzugriffs */
+    /**
+     * LÃ¤nge des Registerzugriffs
+     */
     private int length;
 
-    /** Offset für das Weiteschalten */
+    /**
+     * Offset fÃ¼r das Weiteschalten
+     */
     private int offset;
 
-    /** positiv weitschalten? */
+    /**
+     * positiv weitschalten?
+     */
     private boolean plus;
 
-    /** Registernummer */
+    /**
+     * Registernummer
+     */
     private int nr;
 
     /**
@@ -34,9 +44,9 @@ public class CellarAddressing implements Operand {
      * @param register
      *            Registernummer
      * @param length
-     *            Länge des Registerzugriffs
+     *            LÃ¤nge des Registerzugriffs
      * @param offset
-     *            Offset für das Weiteschalten
+     *            Offset fÃ¼r das Weiteschalten
      * @param plus
      *            positiv weitschalten
      */
@@ -88,7 +98,7 @@ public class CellarAddressing implements Operand {
     }
 
     /**
-     * Gibt den inhalt ohne Weiterschalten des Offsets zurück
+     * Gibt den inhalt ohne Weiterschalten des Offsets zurÃ¼ck
      *
      * @return the content without offset
      */

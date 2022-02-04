@@ -31,7 +31,7 @@ public class Findc extends Command {
     Operand op4;
 
     /**
-     * Konstruktor für einen Findc-Befehl
+     * Konstruktor fÃ¼r einen Findc-Befehl
      *
      * @param line
      *            Zeile im Quelltext

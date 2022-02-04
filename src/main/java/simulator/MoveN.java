@@ -19,27 +19,35 @@ public class MoveN extends Command {
     /** erster Operand */
     Operand op1;
 
-    /** zweiter Operand */
+    /**
+     * zweiter Operand
+     */
     Operand op2;
 
-    /** true, falls es sich um einen 3-Adressbefehl handelt */
+    /**
+     * true, falls es sich um einen 3-Adressbefehl handelt
+     */
     boolean three = false;
 
-    /** true, falls es ein Gleitpunktzahlbefehl ist */
+    /**
+     * true, falls es ein Gleitpunktzahlbefehl ist
+     */
     boolean floating = false;
 
-    /** Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8 */
+    /**
+     * LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     */
     int length = 0;
 
     /**
-     * Konstruktor für einen MoveN-Befehl
+     * Konstruktor fÃ¼r einen MoveN-Befehl
      *
      * @param line
      *            Zeile im Quelltext
      * @param adress
      *            Adresse des Befehls
      * @param length
-     *            Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     *            LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
      * @param op1
      *            erster Operand
      * @param op2

@@ -30,7 +30,7 @@ public class Rot extends Command {
     Operand op3;
 
     /**
-     * Konstruktor für einen Rot-Befehl
+     * Konstruktor fÃ¼r einen Rot-Befehl
      *
      * @param line   Zeile im Quelltext
      * @param adress Adresse des Befehls

@@ -6,19 +6,19 @@ import enviroment.NumberConversion;
 import gui.CONSTANTS;
 
 /**
- * Operandenspezifikation für die Absolute Adressierung
+ * Operandenspezifikation fÃ¼r die Absolute Adressierung
  *
  * @author Matthias Oehme
  */
 public class AbsAddress implements Operand, AdressGetter {
 
     /**
-     * Die Adresse für den Operanden
+     * Die Adresse fÃ¼r den Operanden
      */
     private int adress;
 
     /**
-     * Die Länge des Operanden
+     * Die LÃ¤nge des Operanden
      */
     private int length;
 
@@ -38,10 +38,10 @@ public class AbsAddress implements Operand, AdressGetter {
     private int offset = 0;
 
     /**
-     * Konstruktor für eine Operanden - Absolute Adressierung
+     * Konstruktor fÃ¼r eine Operanden - Absolute Adressierung
      *
      * @param adress Adresse des Operanden
-     * @param length Länge des Operanden
+     * @param length LÃ¤nge des Operanden
      * @param ort    Speicherstelle des Operanden
      */
     public AbsAddress(int adress, int length, int ort) {
@@ -51,10 +51,10 @@ public class AbsAddress implements Operand, AdressGetter {
     }
 
     /**
-     * Konstruktor für eine Operanden - Absolute Adressierung mit einem Label
+     * Konstruktor fÃ¼r eine Operanden - Absolute Adressierung mit einem Label
      *
      * @param name   Labelname des Operanden
-     * @param length Länge des Operanden
+     * @param length LÃ¤nge des Operanden
      * @param ort    Speicherstelle des Operanden
      * @param offset Offset des Operanden
      */
@@ -91,7 +91,7 @@ public class AbsAddress implements Operand, AdressGetter {
     }
 
     /**
-     * Gibt den Labelnamen zurück.
+     * Gibt den Labelnamen zurÃ¼ck.
      *
      * @return the label
      */
@@ -135,7 +135,7 @@ public class AbsAddress implements Operand, AdressGetter {
     }
 
     /**
-     * Gibt die Speichertstelle der Operanden zurück.
+     * Gibt die Speichertstelle der Operanden zurÃ¼ck.
      *
      * @return Speicherstelle des Operanden
      */
@@ -144,7 +144,7 @@ public class AbsAddress implements Operand, AdressGetter {
     }
 
     /**
-     * Überprüft ob der Operand ein Label enthält
+     * ÃœberprÃ¼ft ob der Operand ein Label enthÃ¤lt
      *
      * @return true, wenn Label enthalten ist
      */

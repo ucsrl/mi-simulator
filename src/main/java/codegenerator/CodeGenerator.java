@@ -10,22 +10,30 @@ import simulator.Command;
 import java.util.ArrayList;
 
 /**
- * Diese Klasse bereitet die Befehle für die Generierung des Maschinencodes vor.
+ * Diese Klasse bereitet die Befehle fÃ¼r die Generierung des Maschinencodes vor.
  *
  * @author Matthias Oehme
  */
 public class CodeGenerator {
 
-    /** Liste der definierten Label */
+    /**
+     * Liste der definierten Label
+     */
     private ArrayList<Label> defindedLabel = new ArrayList<Label>();
 
-    /** Liste der genutzten Label */
+    /**
+     * Liste der genutzten Label
+     */
     private ArrayList<LabelInUse> usedLabel = new ArrayList<LabelInUse>();
 
-    /** Zugehöriges Programm im Zwischencode */
+    /**
+     * ZugehÃ¶riges Programm im Zwischencode
+     */
     private Program program;
 
-    /** Zugehöriger Parser */
+    /**
+     * ZugehÃ¶riger Parser
+     */
     private Parser parser;
 
     /**
@@ -39,7 +47,7 @@ public class CodeGenerator {
     }
 
     /**
-     * Fügt ein weiteres Label zur Liste der definierten Label hinzu
+     * FÃ¼gt ein weiteres Label zur Liste der definierten Label hinzu
      *
      * @param lab
      *            definiertes Label
@@ -55,7 +63,7 @@ public class CodeGenerator {
     }
 
     /**
-     * Fügt ein weiteres Label zur Liste der genutzten Label hinzu
+     * FÃ¼gt ein weiteres Label zur Liste der genutzten Label hinzu
      *
      * @param label
      *            genutztes label
@@ -65,7 +73,7 @@ public class CodeGenerator {
     }
 
     /**
-     * Verschiebt die Befehle an einer bestimmten Adresse um das übergegebene
+     * Verschiebt die Befehle an einer bestimmten Adresse um das Ã¼bergegebene
      * Offset
      *
      * @param begin
@@ -86,7 +94,7 @@ public class CodeGenerator {
     }
 
     /**
-     * Prüft ob alle Label, die genutzt werden auch definiert sind.
+     * PrÃ¼ft ob alle Label, die genutzt werden auch definiert sind.
      *
      * @return true, wenn alle Label definiert sind
      */
@@ -105,7 +113,7 @@ public class CodeGenerator {
     }
 
     /**
-     * Überprüft, ob alle Label richtig gesetzt wurden
+     * ÃœberprÃ¼ft, ob alle Label richtig gesetzt wurden
      *
      * @return true, wenn alle Label auf die richtigen Speicherstellen zeigen
      */
@@ -120,21 +128,21 @@ public class CodeGenerator {
                                 && label_defined.getAdress()
                                 != (label_used.getOp().getAdress())) {
                             return false; // falls Labeladressen nicht
-                            // übereinstimmen, false
+                            // Ã¼bereinstimmen, false
                         }
 
                     }
                 }
             }
         }
-        return true; // alle Labeladressen stimmen überein
+        return true; // alle Labeladressen stimmen Ã¼berein
     }
 
     /**
      * Labelberechnung
      *
      * @param program
-     *            Programm für welches die Label berechnet werden sollen
+     *            Programm fÃ¼r welches die Label berechnet werden sollen
      */
     public void evalLabel(Program program) {
         this.program = program;
@@ -148,7 +156,7 @@ public class CodeGenerator {
                         .getOpCode().length;
 
                 // Adresse des definierten Label stimmt nicht
-                // mit der des genutzten Label überein
+                // mit der des genutzten Label Ã¼berein
                 if (label_defined.getAdress() != label_used.getOp().getAdress()) {
 
                     // Adress neusetzen
@@ -165,14 +173,14 @@ public class CodeGenerator {
                         - opcode_length_old);
             }
 
-            // Prüfen ob alle Label richtig gesetzt sind
+            // PrÃ¼fen ob alle Label richtig gesetzt sind
             fertig = checkLabels();
         }
 
-        // Für alle Befehle die Adressen aktualisieren
+        // FÃ¼r alle Befehle die Adressen aktualisieren
         aktAddress(0, 0);
 
-        // Anzeige einer Tabelle mit Labeln und den zugehörigen Adressen
+        // Anzeige einer Tabelle mit Labeln und den zugehÃ¶rigen Adressen
         Enviroment.getLabelWindow().setContent(defindedLabel);
         Enviroment.getLabelWindow().setVisible(Enviroment.label_Window);
         Enviroment.getLabelWindow().pack();

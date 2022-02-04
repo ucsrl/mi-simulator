@@ -31,7 +31,7 @@ public class Enviroment {
     public static Flags flags;
 
     /**
-     * Das zugehörige Programm im Zwischencode
+     * Das zugehÃ¶rige Programm im Zwischencode
      */
     private static Program program;
 
@@ -56,7 +56,7 @@ public class Enviroment {
     public static int STACKBEGIN = 0;
 
     /**
-     * Übersetzungszustand des Programms
+     * Ãœbersetzungszustand des Programms
      */
     public static boolean compiled = false;
 
@@ -65,7 +65,7 @@ public class Enviroment {
     public static boolean label_Window = false;
 
     /**
-     * Der nächste Befehl
+     * Der nÃ¤chste Befehl
      */
     private static Command next;
 
@@ -83,7 +83,7 @@ public class Enviroment {
     }
 
     /**
-     * Gibt den Befehl an einer Adresse zurück
+     * Gibt den Befehl an einer Adresse zurÃ¼ck
      *
      * @param address Adresse
      * @return Befehl oder null

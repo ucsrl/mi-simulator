@@ -1,14 +1,14 @@
 package simulator;
 
 /**
- * Interface für die Rückgabe von Adressen
+ * Interface fÃ¼r die RÃ¼ckgabe von Adressen
  *
  * @author Matthias Oehme
  */
 public interface AdressGetter {
 
     /**
-     * Gibt die Adresse zurück
+     * Gibt die Adresse zurÃ¼ck
      *
      * @return Adresse
      */

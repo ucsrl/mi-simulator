@@ -8,7 +8,7 @@ import javax.swing.event.ListDataListener;
 import java.util.ArrayList;
 
 /**
- * Die Klasse beinhaltet das ListModel für die Speicherdarstellung
+ * Die Klasse beinhaltet das ListModel fÃ¼r die Speicherdarstellung
  *
  * @author Matthias oehme
  */

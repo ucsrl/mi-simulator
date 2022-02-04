@@ -28,12 +28,12 @@ public class DD extends Command {
     boolean floating = false;
 
     /**
-     * Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     * LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
      */
     int length = 0;
 
     /**
-     * Konstruktor für einen 2-Adress ADD-Befehl
+     * Konstruktor fÃ¼r einen 2-Adress ADD-Befehl
      *
      * @param line   Zeile im Quelltext
      * @param adress Adresse des Befehls
@@ -116,7 +116,7 @@ public class DD extends Command {
      */
     @Override
     public void run() {
-        System.out.println("Datendefinition sind nicht ausführbar.");
+        System.out.println("Datendefinition sind nicht ausfÃ¼hrbar.");
     }
 
     /*

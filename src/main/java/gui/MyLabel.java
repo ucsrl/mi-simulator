@@ -9,7 +9,7 @@ import enviroment.Enviroment;
 import javax.swing.*;
 
 /**
- * The Class MyLabel.Die Klasse repr‰sentiert ein Label, welches Klickbar ist
+ * The Class MyLabel.Die Klasse repr√§sentiert ein Label, welches Klickbar ist
  *
  * @author Matthias Oehme
  */
@@ -60,10 +60,9 @@ public class MyLabel extends JLabel {
     }
 
     /**
-     * Setzt den Status und ‰ndert das Icon, falls erforderlich
+     * Setzt den Status und √§ndert das Icon, falls erforderlich
      *
-     * @param status
-     *            neuer Status
+     * @param status neuer Status
      */
     public void setStatus(boolean status) {
         this.status = status;

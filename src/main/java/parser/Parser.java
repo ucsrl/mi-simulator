@@ -14,7 +14,7 @@ import simulator.*;
 import java.util.ArrayList;
 
 /**
- * parser-Klasse für den MI-Simulator
+ * parser-Klasse fÃ¼r den MI-Simulator
  */
 public class Parser {
 

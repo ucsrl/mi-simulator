@@ -5,7 +5,7 @@ import enviroment.MyByte;
 import enviroment.NumberConversion;
 
 /**
- * Operandenspezifikation für die Registeradressierung
+ * Operandenspezifikation fÃ¼r die Registeradressierung
  *
  * @author Matthias Oehme
  */
@@ -17,15 +17,15 @@ public class RegisterAddressing implements Operand {
     int nr;
 
     /**
-     * Länge des Registerzugriffs
+     * LÃ¤nge des Registerzugriffs
      */
     int length;
 
     /**
-     * Konstruktor für die Registeradressierung
+     * Konstruktor fÃ¼r die Registeradressierung
      *
      * @param nr     Regsiternummer
-     * @param length Länge des Registerzugriffs
+     * @param length LÃ¤nge des Registerzugriffs
      */
     public RegisterAddressing(int nr, int length) {
         this.nr = nr;

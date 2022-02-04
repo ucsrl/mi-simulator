@@ -774,7 +774,7 @@ public class Interpreter {
     }
 
     /**
-     * Gibt das nächste Byte aus dem Speicher zurück und erhöht den PC
+     * Gibt das nÃ¤chste Byte aus dem Speicher zurÃ¼ck und erhÃ¶ht den PC
      *
      * @return the next byte
      */
@@ -785,9 +785,9 @@ public class Interpreter {
     }
 
     /**
-     * Gibt den nächste Befehl zurück
+     * Gibt den nÃ¤chste Befehl zurÃ¼ck
      *
-     * @return nächster Befehl
+     * @return nÃ¤chster Befehl
      */
     public static Command getNextCommand() {
         int pc = Enviroment.getPC();

@@ -21,12 +21,10 @@ public class LabelTableEntry {
     String adr;
 
     /**
-     * Konstruktor für einen Speicherzelleneintrag
+     * Konstruktor fÃ¼r einen Speicherzelleneintrag
      *
-     * @param data
-     *            Daten der Speicherzelle
-     * @param adr
-     *            the adr
+     * @param data Daten der Speicherzelle
+     * @param adr  the adr
      */
     public LabelTableEntry(ArrayList<MyByte> data, String adr) {
         this.data = data;
@@ -37,7 +35,7 @@ public class LabelTableEntry {
      * Setzt die Daten der Speicherzellen
      *
      * @param data
-     *            geänderte Daten
+     *            geÃ¤nderte Daten
      */
     public void setData(ArrayList<MyByte> data) {
         this.data = data;

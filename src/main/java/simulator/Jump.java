@@ -25,7 +25,7 @@ public class Jump extends Command {
     int typ;
 
     /**
-     * Konstruktor für einen Jump-Befehl
+     * Konstruktor fÃ¼r einen Jump-Befehl
      *
      * @param line
      *            Zeile im Quelltext

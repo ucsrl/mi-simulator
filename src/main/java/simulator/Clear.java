@@ -17,24 +17,30 @@ import java.util.ArrayList;
  */
 public class Clear extends Command {
 
-    /** erster Operand */
+    /**
+     * erster Operand
+     */
     Operand op1;
 
-    /** Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8 */
+    /**
+     * LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     */
     int length = 0;
 
-    /** true, falls es ein Gleitpunktzahlbefehl ist */
+    /**
+     * true, falls es ein Gleitpunktzahlbefehl ist
+     */
     boolean floating = false;
 
     /**
-     * Konstruktor für einen Clear-Befehl
+     * Konstruktor fÃ¼r einen Clear-Befehl
      *
      * @param line
      *            Zeile im Quelltext
      * @param adress
      *            Adresse des Befehls
      * @param length
-     *            Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     *            LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
      * @param op1
      *            erster Operand
      * @param beg

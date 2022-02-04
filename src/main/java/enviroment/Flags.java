@@ -31,23 +31,23 @@ public class Flags {
     private boolean negative = false;
 
     /**
-     * CheckBox für die Darstellung des Carry-Flag
+     * CheckBox fÃ¼r die Darstellung des Carry-Flag
      */
     private FixedStateCheckBox carry_cb = new FixedStateCheckBox("Carry");
 
     /**
-     * CheckBox für die Darstellung des Zero-Flag
+     * CheckBox fÃ¼r die Darstellung des Zero-Flag
      */
     private FixedStateCheckBox zero_cb = new FixedStateCheckBox("Zero");
     ;
 
     /**
-     * CheckBox für die Darstellung des Overflow-Flag
+     * CheckBox fÃ¼r die Darstellung des Overflow-Flag
      */
     private FixedStateCheckBox overflow_cb = new FixedStateCheckBox("Overflow");
 
     /**
-     * CheckBox für die Darstellung des Negative-Flag
+     * CheckBox fÃ¼r die Darstellung des Negative-Flag
      */
     private FixedStateCheckBox negative_cb = new FixedStateCheckBox("Negative");
 

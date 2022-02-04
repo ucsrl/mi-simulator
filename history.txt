@@ -1,6 +1,6 @@
 Version 1.10 vom 05.03.2021 (Martin Desharnais)
     Fehlerbehebungen
-        - Die opcode-Generierung fÃ¼r den XOR-Befehl war inkorrekt.
+        - Die opcode-Generierung fÃƒÂ¼r den XOR-Befehl war inkorrekt.
 
 Version 1.09 vom 04.12.2013 (Mark Minas)
     Fehlerbehebungen
@@ -8,9 +8,9 @@ Version 1.09 vom 04.12.2013 (Mark Minas)
     
 Version 1.08 vom 01.12.2012 (Matthias Oehme)
 	Neuerungen
-		- Dateien können nun auch per Drag&Drop geöffnet werden
-		- Einführung von Tastenkürzeln
-		- Eingabefeld wurde erweitert um die Mäglichkeit änderungen Rückgängig zu machen. (BETA)
+		- Dateien kÃ¶nnen nun auch per Drag&Drop geÃ¶ffnet werden
+		- EinfÃ¼hrung von TastenkÃ¼rzeln
+		- Eingabefeld wurde erweitert um die MÃ¤glichkeit Ã¤nderungen RÃ¼ckgÃ¤ngig zu machen. (BETA)
 		
 	
 	Fehlerbehebungen
@@ -21,7 +21,7 @@ Version 1.08 vom 01.12.2012 (Matthias Oehme)
 
 Version 1.07 vom 01.03.2012 (Matthias Oehme)
 	Neuerungen
-		- Abschaltung von Syntaxhighlighting über Menü
+		- Abschaltung von Syntaxhighlighting Ã¼ber MenÃ¼
 		- Anzeigen eines Fensters mit Label und Labeladressen
 	
 	Fehlerbehebungen

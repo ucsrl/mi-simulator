@@ -9,7 +9,7 @@ import gui.CONSTANTS;
 import java.util.ArrayList;
 
 /**
- * Abstrakte Oberklasse für Befehle
+ * Abstrakte Oberklasse fÃ¼r Befehle
  */
 public abstract class Command {
 
@@ -49,7 +49,7 @@ public abstract class Command {
     private boolean breakPoint = false;
 
     /**
-     * Konstruktor für einen Befehl
+     * Konstruktor fÃ¼r einen Befehl
      *
      * @param line   Zeile des Quelltextes in der der Befehl steht
      * @param adress Adresse des Befehls im Speicher
@@ -64,7 +64,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt die Adresse des Befehls zurück
+     * Gibt die Adresse des Befehls zurÃ¼ck
      *
      * @return Adresse des Befehls
      */
@@ -74,7 +74,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt die Zeichenpostition - Beginn des Befehlswortes im Quelltext zurück
+     * Gibt die Zeichenpostition - Beginn des Befehlswortes im Quelltext zurÃ¼ck
      *
      * @return Zeichenpostition - Beginn des Befehlswortes im Quelltext
      */
@@ -83,7 +83,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt die Zeichenpostition - Ende des Befehlswortes im Quelltext zurück
+     * Gibt die Zeichenpostition - Ende des Befehlswortes im Quelltext zurÃ¼ck
      *
      * @return Zeichenpostition - Ende des Befehlswortes im Quelltext
      */
@@ -92,7 +92,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt die Label des Befehls zurück
+     * Gibt die Label des Befehls zurÃ¼ck
      *
      * @return Label des Befehls
      */
@@ -101,7 +101,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt die Zeile des Befehls im Quelltext zurück
+     * Gibt die Zeile des Befehls im Quelltext zurÃ¼ck
      *
      * @return Zeile des Befehls im Quelltext
      */
@@ -110,7 +110,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt den nachfolgenden Befehl zurück
+     * Gibt den nachfolgenden Befehl zurÃ¼ck
      *
      * @return nachfolgenden Befehl
      */
@@ -119,7 +119,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt den Opcode des Befehls zurück
+     * Gibt den Opcode des Befehls zurÃ¼ck
      *
      * @return Opcode des Befehls
      */
@@ -128,7 +128,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt den vorherigen Befehl zurück
+     * Gibt den vorherigen Befehl zurÃ¼ck
      *
      * @return vorherigen Befehl
      */
@@ -137,7 +137,7 @@ public abstract class Command {
     }
 
     /**
-     * Gibt zurück ob ein Breakpoint gesetz wurde
+     * Gibt zurÃ¼ck ob ein Breakpoint gesetz wurde
      *
      * @return true, wenn Breakpoint gesetz
      */
@@ -146,16 +146,16 @@ public abstract class Command {
     }
 
     /**
-     * Gibt zurück ob der Befehl label enthält
+     * Gibt zurÃ¼ck ob der Befehl label enthÃ¤lt
      *
-     * @return true, wenn Befehl label enthält
+     * @return true, wenn Befehl label enthÃ¤lt
      */
     public boolean hasLabel() {
         return getLabel().size() != 0;
     }
 
     /**
-     * Methode zur Ausführung eines Befehls
+     * Methode zur AusfÃ¼hrung eines Befehls
      */
     public synchronized void run() {
         Enviroment.REGISTERS.getRegister(CONSTANTS.PC_REGISTER).setContent(

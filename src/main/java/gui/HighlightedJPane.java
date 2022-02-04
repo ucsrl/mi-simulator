@@ -21,7 +21,7 @@ import java.awt.event.KeyListener;
 
 /**
  * Diese Klasse stellt den SourceCode eines MI-Programms dar. Dabei wird dieser
- * entsprechend eingefärbt.
+ * entsprechend eingefÃ¤rbt.
  *
  * @author Nico Krebs und Mattias Oehme
  */
@@ -105,14 +105,14 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
     private MutableAttributeSet norm = new SimpleAttributeSet();
 
     /**
-     * FarbDefinition für falschen Opcode
+     * FarbDefinition fÃ¼r falschen Opcode
      */
     private MutableAttributeSet different_opcode = new SimpleAttributeSet();
 
     final UndoManager undomanager = new UndoManager();
 
     /**
-     * Dieser Kontruktor erzeugt eine JTexPane, die MI-Assembler-Code einfärben
+     * Dieser Kontruktor erzeugt eine JTexPane, die MI-Assembler-Code einfÃ¤rben
      * kann.
      */
     public HighlightedJPane() {
@@ -131,14 +131,14 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
         StyleConstants.setForeground(fehler, new Color(255, 0, 0));
         StyleConstants.setBackground(different_opcode, new Color(255, 0, 0));
 
-        // behandel selbst alle Veränderungen des Cursors...
+        // behandel selbst alle VerÃ¤nderungen des Cursors...
         addKeyListener(this);
 
         getDocument().addUndoableEditListener(new UndoableEditListener() {
             public void undoableEditHappened(UndoableEditEvent e) {
                 // style changes are done automatically by the text pane. it
                 // doesn't make sense to undo them
-                if (e.getEdit().getPresentationName() != "Formatvorlagenänderung") {
+                if (e.getEdit().getPresentationName() != "FormatvorlagenÃ¤nderung") {
                     undomanager.addEdit(e.getEdit());
                 }
 
@@ -148,7 +148,7 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
     }
 
     /**
-     * Diese Methode färbt alle erkannten Token im im ganzen Text
+     * Diese Methode fÃ¤rbt alle erkannten Token im im ganzen Text
      */
     public void doHighLighting() {
         if (Enviroment.shl) {
@@ -179,7 +179,7 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
     }
 
     /**
-     * Highlightet das übergegebene Token im Quelltext
+     * Highlightet das Ã¼bergegebene Token im Quelltext
      *
      * @param in erkanntes Token
      */
@@ -251,7 +251,7 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
     }
 
     /**
-     * Highlighted den nächsten Befehl
+     * Highlighted den nÃ¤chsten Befehl
      */
     public void highlightNextCommand() {
         if (Enviroment.getNextCommand() != null) {
@@ -296,7 +296,7 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
     @Override
     public void keyReleased(KeyEvent arg0) {
 
-        // prüfen ob sich der Inhalt des Textfeldes wirklich geändert hat
+        // prÃ¼fen ob sich der Inhalt des Textfeldes wirklich geÃ¤ndert hat
         if (!(getText().equals(oldText))) {
             if (compiled) {
                 compiled = false;
@@ -320,8 +320,8 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
     }
 
     /**
-     * Die Mathode färbt das aktuell erkannte Token entsprechend ein. Dazu wird
-     * das gestylte Dokument übergeben, die Start- und Endposition und die
+     * Die Mathode fÃ¤rbt das aktuell erkannte Token entsprechend ein. Dazu wird
+     * das gestylte Dokument Ã¼bergeben, die Start- und Endposition und die
      * jeweilig Farbe.
      *
      * @param doc  the doc
@@ -334,7 +334,7 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
 
         // solange, bis es klappt wiederholen...
         // Es kann hier Schreib-/Lesekonflikte geben, die
-        // sich aber schnell auflösen...
+        // sich aber schnell auflÃ¶sen...
 
         doc.setCharacterAttributes(pos1, pos2, k, true);
 
@@ -355,7 +355,7 @@ public class HighlightedJPane extends JTextPane implements KeyListener {
         }
     }
 
-    // Vergrößern falls nötig
+    // VergrÃ¶ÃŸern falls nÃ¶tig
     /*
      * (non-Javadoc)
      *

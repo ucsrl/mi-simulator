@@ -5,7 +5,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 /**
- * Diese Klasse wird für die Darstellung der Flags genutzt
+ * Diese Klasse wird fÃ¼r die Darstellung der Flags genutzt
  */
 public class FixedStateCheckBox extends JCheckBox implements ItemListener {
 

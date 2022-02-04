@@ -16,17 +16,23 @@ import java.util.ArrayList;
  *
  */
 public class Conv extends Command {
-    /** erster Operand */
+    /**
+     * erster Operand
+     */
     Operand op1;
 
-    /** zweiter Operand */
+    /**
+     * zweiter Operand
+     */
     Operand op2;
 
-    /** Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8 */
+    /**
+     * LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     */
     int length = 0;
 
     /**
-     * Konstruktor für einen 2-Adress ADD-Befehl
+     * Konstruktor fÃ¼r einen 2-Adress ADD-Befehl
      *
      * @param line
      *            Zeile im Quelltext

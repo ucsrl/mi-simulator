@@ -21,7 +21,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 /**
- * Diese Klasse enthält die grafischen Elemente
+ * Diese Klasse enthÃ¤lt die grafischen Elemente
  */
 public class Window extends javax.swing.JFrame {
 
@@ -86,22 +86,22 @@ public class Window extends javax.swing.JFrame {
     private JCheckBoxMenuItem label_windowMenuItem;
 
     /**
-     * Dateimenü
+     * DateimenÃ¼
      */
     private JMenu file_menu;
 
     /**
-     * Bearbeitenmenü
+     * BearbeitenmenÃ¼
      */
     private JMenu edit_menu;
 
     /**
-     * Einstellungsmenü
+     * EinstellungsmenÃ¼
      */
     private JMenu settings_menu;
 
     /**
-     * Menüleiste
+     * MenÃ¼leiste
      */
     private JMenuBar jMenuBar1;
 
@@ -111,12 +111,12 @@ public class Window extends javax.swing.JFrame {
     private Scanner scanner;
 
     /**
-     * Anzeigebereich für den Speicher
+     * Anzeigebereich fÃ¼r den Speicher
      */
     private JScrollPane memory;
 
     /**
-     * Anzeigebereich für die Register
+     * Anzeigebereich fÃ¼r die Register
      */
     private JScrollPane register;
 
@@ -126,7 +126,7 @@ public class Window extends javax.swing.JFrame {
     private JPanel flag;
 
     /**
-     * Anzeigebereich für den Kellerspeicher
+     * Anzeigebereich fÃ¼r den Kellerspeicher
      */
     private JScrollPane stack;
 
@@ -151,12 +151,12 @@ public class Window extends javax.swing.JFrame {
     private JButton btnStep;
 
     /**
-     * Nächster befehl
+     * NÃ¤chster befehl
      */
     private Command nex = null;
 
     /**
-     * Übersetzungsstatus
+     * Ãœbersetzungsstatus
      */
     private boolean compiled = false;
 
@@ -256,7 +256,7 @@ public class Window extends javax.swing.JFrame {
     private final JFileChooser fc = new JFileChooser();
 
     /**
-     * Konstruktor für das Fenster
+     * Konstruktor fÃ¼r das Fenster
      */
     public Window() {
         super();
@@ -301,10 +301,10 @@ public class Window extends javax.swing.JFrame {
     }
 
     /**
-     * initalisiert die grafische Oberfläche
+     * initalisiert die grafische OberflÃ¤che
      */
     private void initGUI() {
-        // Diese Methode sollte unbedingt in de nächsten Version auf mehrere
+        // Diese Methode sollte unbedingt in de nÃ¤chsten Version auf mehrere
         // Klassen aufgeteilt werden.
         fc.setFileFilter(new FileNameExtensionFilter("MI-File", "mi"));
 
@@ -686,7 +686,7 @@ public class Window extends javax.swing.JFrame {
                 });
 
                 file_menu.add(openFileMenuItem);
-                openFileMenuItem.setText("Öffnen");
+                openFileMenuItem.setText("Ã–ffnen");
                 openFileMenuItem.setAccelerator(
                         KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O,
                                 java.awt.Event.CTRL_MASK));
@@ -802,7 +802,7 @@ public class Window extends javax.swing.JFrame {
                     }
                 });
                 edit_menu.add(undoMenuItem);
-                undoMenuItem.setText("Rückgängig");
+                undoMenuItem.setText("RÃ¼ckgÃ¤ngig");
                 undoMenuItem.setAccelerator(
                         KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z,
                                 java.awt.Event.CTRL_MASK));
@@ -849,7 +849,7 @@ public class Window extends javax.swing.JFrame {
         {
             jMenu5 = new JMenu();
             jMenuBar1.add(jMenu5);
-            jMenu5.setText("Über");
+            jMenu5.setText("Ãœber");
             {
 
                 aboutMenuItem = new JMenuItem();
@@ -864,7 +864,7 @@ public class Window extends javax.swing.JFrame {
                     }
                 });
                 jMenu5.add(aboutMenuItem);
-                aboutMenuItem.setText("Über");
+                aboutMenuItem.setText("Ãœber");
             }
         }
         getContentPane().add(main_panel);
@@ -881,21 +881,21 @@ public class Window extends javax.swing.JFrame {
     }
 
     /**
-     * Zeigt den Speicherdialog, wenn sich der Inhalt geändert hat
+     * Zeigt den Speicherdialog, wenn sich der Inhalt geÃ¤ndert hat
      *
      * @return true, if successful
      */
     private boolean saveOld() {
         if (text.getText().equals(oldtext)) {
-            return true; // keine Änderungen
+            return true; // keine Ã„nderungen
         }
         int option = JOptionPane.showConfirmDialog(Window.this,
-                "Möchten Sie die Änderungen in " + (
+                "MÃ¶chten Sie die Ã„nderungen in " + (
                         file != null ?
                                 file.getName() :
                                 "unbenannt.mi")
                         + " speichern?",
-                "Änderungen speichern?",
+                "Ã„nderungen speichern?",
                 JOptionPane.YES_NO_CANCEL_OPTION);
         switch (option) {
             case JOptionPane.YES_OPTION:
@@ -943,7 +943,7 @@ public class Window extends javax.swing.JFrame {
     }
 
     /**
-     * Wird ausgefuehrt, wenn eine Veränderung des Quelltextes festgestellt wird
+     * Wird ausgefuehrt, wenn eine VerÃ¤nderung des Quelltextes festgestellt wird
      */
     public void textChanged() {
         if (run != null) {
@@ -1022,7 +1022,7 @@ public class Window extends javax.swing.JFrame {
     }
 
     /**
-     * Setzt die Größe des Fensters
+     * Setzt die GrÃ¶ÃŸe des Fensters
      */
     public void resetSize() {
         setExtendedState(JFrame.MAXIMIZED_BOTH);

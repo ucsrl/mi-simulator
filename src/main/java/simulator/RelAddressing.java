@@ -7,7 +7,7 @@ import enviroment.Register;
 import gui.CONSTANTS;
 
 /**
- * Operandenspeziikation für Relative Adressierung
+ * Operandenspeziikation fÃ¼r Relative Adressierung
  */
 public class RelAddressing implements Operand, AdressGetter {
 
@@ -37,11 +37,11 @@ public class RelAddressing implements Operand, AdressGetter {
     private int address;
 
     /**
-     * Konstruktor für die Relative Adressierung
+     * Konstruktor fÃ¼r die Relative Adressierung
      *
      * @param offset  offset
      * @param reg     Registernummer
-     * @param length  Länge des Registerzugriffs
+     * @param length  LÃ¤nge des Registerzugriffs
      * @param address Adresse des Befehls
      */
     public RelAddressing(int offset, int reg, int length, int address) {
@@ -53,12 +53,12 @@ public class RelAddressing implements Operand, AdressGetter {
     }
 
     /**
-     * Konstruktor für die Relative Adressierung
+     * Konstruktor fÃ¼r die Relative Adressierung
      *
      * @param offset  offset
      * @param reg     Registernummer
      * @param index   Indexregister
-     * @param length  Länge des Registerzugriffs
+     * @param length  LÃ¤nge des Registerzugriffs
      * @param address Adresse des Befehls the adress
      */
     public RelAddressing(int offset, int reg, int index, int length, int address) {

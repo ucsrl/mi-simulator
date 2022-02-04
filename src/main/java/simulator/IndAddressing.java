@@ -10,7 +10,7 @@ import enviroment.Register;
 import gui.CONSTANTS;
 
 /**
- * Operandenspezifikation für Indirekte Adressierung
+ * Operandenspezifikation fÃ¼r Indirekte Adressierung
  *
  * @author Cyberdyne
  */
@@ -32,14 +32,11 @@ public class IndAddressing implements Operand, AdressGetter {
     private int nr2;
 
     /**
-     * Konstruktor für die Indirekteadressierung
+     * Konstruktor fÃ¼r die Indirekteadressierung
      *
-     * @param register1
-     *            Regsiternummer
-     * @param length
-     *            Länge des Registerzugriffs
-     * @param address
-     *            Adresse des Befehls
+     * @param register1 Regsiternummer
+     * @param length    LÃ¤nge des Registerzugriffs
+     * @param address   Adresse des Befehls
      */
     public IndAddressing(int register1, int length, int address) {
         this.address = address;
@@ -51,16 +48,12 @@ public class IndAddressing implements Operand, AdressGetter {
     }
 
     /**
-     * Konstruktor für die Indirekteadressierung
+     * Konstruktor fÃ¼r die Indirekteadressierung
      *
-     * @param offset
-     *            offset
-     * @param register1
-     *            Regsiternummer
-     * @param length
-     *            Länge des Registerzugriffs
-     * @param address
-     *            Adresse des Befehls
+     * @param offset    offset
+     * @param register1 Regsiternummer
+     * @param length    LÃ¤nge des Registerzugriffs
+     * @param address   Adresse des Befehls
      */
     public IndAddressing(int offset, int register1, int length, int address) {
         this.address = address;
@@ -72,7 +65,7 @@ public class IndAddressing implements Operand, AdressGetter {
     }
 
     /**
-     * Konstruktor für die Indirekteadressierung
+     * Konstruktor fÃ¼r die Indirekteadressierung
      *
      * @param offset
      *            offset
@@ -81,7 +74,7 @@ public class IndAddressing implements Operand, AdressGetter {
      * @param register2
      *            Indexregister
      * @param length
-     *            Länge des Registerzugriffs
+     *            LÃ¤nge des Registerzugriffs
      * @param address
      *            Adresse des Befehls
      */

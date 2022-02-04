@@ -23,7 +23,7 @@ public class MoveA extends Command {
     Operand op2;
 
     /**
-     * Konstruktor für einen MoveA-Befehl
+     * Konstruktor fÃ¼r einen MoveA-Befehl
      *
      * @param line
      *            Zeile im Quelltext

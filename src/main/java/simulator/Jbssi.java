@@ -29,7 +29,7 @@ public class Jbssi extends Command {
     Operand op3;
 
     /**
-     * Konstruktor für einen Findc-Befehl
+     * Konstruktor fÃ¼r einen Findc-Befehl
      *
      * @param line
      *            Zeile im Quelltext

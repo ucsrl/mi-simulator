@@ -31,7 +31,7 @@ public class Ext extends Command {
     Operand op4;
 
     /**
-     * Konstruktor für einen 4EXT-Befehl
+     * Konstruktor fÃ¼r einen 4EXT-Befehl
      *
      * @param line
      *            Zeile im Quelltext

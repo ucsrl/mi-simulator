@@ -6,42 +6,41 @@ package gui;
 import java.awt.*;
 
 /**
- * Diese Klasse enthält die Konstanten der MI-Implementierung
+ * Diese Klasse enthÃ¤lt die Konstanten der MI-Implementierung
  *
  * @author Matthias Oehme
- *
  */
 public class CONSTANTS {
 
-    public final static String VERSION = "Version 1.10 (März 2021)";
+    public final static String VERSION = "Version 1.10 (MÃ¤rz 2021)";
     // Fehlermeldungen
     public final static String ERROR_SAVEFILE = "Fehler beim Speichern der Datei.";
-    public final static String ERROR_OPENFILE = "Fehler beim Öffnen der Datei.";
+    public final static String ERROR_OPENFILE = "Fehler beim Ã–ffnen der Datei.";
     public final static String ERROR_PARSER = "Fehler in Zeile";
     public final static String ERROR_PARSER_BHWFD = "B, H, W,F oder D erwartet.";
     public final static String ERROR_PARSER_BHW = "B, H oder W erwartet.";
-    public final static String ERROR_PARSER_NUMBER_OF_OPERANDS = "ungültige Anzahl an Operanden";
+    public final static String ERROR_PARSER_NUMBER_OF_OPERANDS = "ungÃ¼ltige Anzahl an Operanden";
     public final static String ERROR_PARSER_NONUMBER = "ganze Zahl erwartet.";
     public final static String ERROR_PARSER_NO_END_SIGN = "Komma, Semikolon oder Zeilenwechsel erwartet.";
     public final static String ERROR_PARSER_FALSE_SYMBOL = "unerwartetes Symbol.";
     public final static String ERROR_PARSER_PARSE_FLOAT = "Fehler beim Parsen eines Floatwertes.";
     public final static String ERROR_PARSER_PARSE_DOUBLE = "Fehler beim Parsen eines Doublewertes.";
-    public final static String ERROR_PARSER_NO_IMMEDIATE_OPERAND = "kein gültiger Direkter Operand.";
-    public final static String ERROR_PARSER_NO_FLOAT = "Float hier nicht möglich.";
+    public final static String ERROR_PARSER_NO_IMMEDIATE_OPERAND = "kein gÃ¼ltiger Direkter Operand.";
+    public final static String ERROR_PARSER_NO_FLOAT = "Float hier nicht mÃ¶glich.";
     public final static String ERROR_PARSER_NO_REGISTER = "Register, SP oder PC erwartet.";
     public final static String ERROR_PARSER_NO_STAR = "*Zahl erwartet nach einer Datengruppe.";
-    public final static String ERROR_PARSER_NO_VALIDNUMBER = "Zahl befindet sich nicht im gültigen Zahlenbereich.";
+    public final static String ERROR_PARSER_NO_VALIDNUMBER = "Zahl befindet sich nicht im gÃ¼ltigen Zahlenbereich.";
 
     public final static String ERROR_SETBREAKPOINT_TITEL = "Breakpoint nicht gesetzt";
     public final static String ERROR_SETBREAKPOINT_NOT_ASSEMBLED = "Breakoint konnte nicht gesetzt werden, da das Programm noch nicht assembliert ist.";
-    public final static String ERROR_SETBREAKPOINT_NOT_EXECUTABLE_INSTR = "Breakoint konnte nicht gesetzt werden, da sich in der Zeile kein ausführbarer Befehl befindet.";
+    public final static String ERROR_SETBREAKPOINT_NOT_EXECUTABLE_INSTR = "Breakoint konnte nicht gesetzt werden, da sich in der Zeile kein ausfÃ¼hrbarer Befehl befindet.";
 
     public final static String ERROR_MANIPULATION_MEMORY =
-            "Es wurde eine Manipulation im Maschinencode ihres Programms festgestellt. Möglichweise kann der aktuelle Befehl nicht mehr hervorgehoben werden. "
+            "Es wurde eine Manipulation im Maschinencode ihres Programms festgestellt. MÃ¶glichweise kann der aktuelle Befehl nicht mehr hervorgehoben werden. "
                     + "\nDie aktuelle Instruktion wird unterhalb der Programmeingabe angezeigt.";
 
-    public final static String ERROR_MEMORY_TEXT = "Zugriff auf ungültige Speicheradresse! Speicheradr: ";
-    public final static String ERROR_MEMORY_TITLE = "Ungültiger Speicherzugriff";
+    public final static String ERROR_MEMORY_TEXT = "Zugriff auf ungÃ¼ltige Speicheradresse! Speicheradr: ";
+    public final static String ERROR_MEMORY_TITLE = "UngÃ¼ltiger Speicherzugriff";
 
     public final static String INFO_TEXT =
             "MI-Assembler erstellt von Matthias Oehme\n" + VERSION;
@@ -49,8 +48,8 @@ public class CONSTANTS {
     public final static String HELP_TEXT = "Bei Fragen wenden Sie sich bitte an Ihren Betreuer.";
     public final static String HELP_TITLE = "Hilfe";
 
-    public final static String ASSEMBLE_SUCCESSFUL = "Programm wurde erfolgreich übersetzt.";
-    public final static String ASSEMBLE_UNSUCCESSFUL = "Programm konnte nicht übersetzt werden.";
+    public final static String ASSEMBLE_SUCCESSFUL = "Programm wurde erfolgreich Ã¼bersetzt.";
+    public final static String ASSEMBLE_UNSUCCESSFUL = "Programm konnte nicht Ã¼bersetzt werden.";
     public final static String PROGRAM_END = "Programmende erreicht";
     public final static String LABEL_INSTR = "dekodierte Instruktion: ";
     public final static String TITLE = "MI-Assembler " + VERSION;
@@ -58,11 +57,11 @@ public class CONSTANTS {
     public final static Font FONT = new Font("Courier", Font.PLAIN, 14);
     public final static Color DARK_GREY = new Color(90, 90, 90);
 
-    // Konstanten für die Interpreterumgebung
+    // Konstanten fÃ¼r die Interpreterumgebung
     public final static int MEMORY_LENGTH = 1048576; // 1MByte Speicher
     public final static int SP_REGISTER = 14; // Stackpointer
     public final static int PC_REGISTER = 15; // Programcounter
-    public final static int NUMBER_OF_REGISTER = 16; // Sollte nicht verändert
+    public final static int NUMBER_OF_REGISTER = 16; // Sollte nicht verÃ¤ndert
     // werden, da die Opcodes
     // auf 16 Register
     // ausgelegt sind

@@ -3,7 +3,7 @@ package codegenerator;
 import simulator.Command;
 
 /**
- * Diese Klasse repräsentiert ein definiertes Label für die Symboltabelle -
+ * Diese Klasse reprÃ¤sentiert ein definiertes Label fÃ¼r die Symboltabelle -
  * CodeGenerator
  *
  * @author Matthias Oehme
@@ -32,16 +32,16 @@ public class Label {
     }
 
     /**
-     * Gibt die Adresse des zugehörigen Befehls zurück
+     * Gibt die Adresse des zugehÃ¶rigen Befehls zurÃ¼ck
      *
-     * @return Adresse des zugehörigen Befehls zurück
+     * @return Adresse des zugehÃ¶rigen Befehls zurÃ¼ck
      */
     public int getAdress() {
         return ziel.getAdress();
     }
 
     /**
-     * Gibt den Namen des Labels zurück.
+     * Gibt den Namen des Labels zurÃ¼ck.
      *
      * @return Name des Labels
      */

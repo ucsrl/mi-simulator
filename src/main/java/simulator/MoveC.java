@@ -16,17 +16,23 @@ import java.util.ArrayList;
  * @author Matthias Oehme
  */
 public class MoveC extends Command {
-    /** erster Operand */
+    /**
+     * erster Operand
+     */
     Operand op1;
 
-    /** zweiter Operand */
+    /**
+     * zweiter Operand
+     */
     Operand op2;
 
-    /** Länge Befehls B = 1, H = 2, W = 4, F = 4, D = 8 */
+    /**
+     * LÃ¤nge Befehls B = 1, H = 2, W = 4, F = 4, D = 8
+     */
     int length = 0;
 
     /**
-     * Konstruktor für einen MoveC-Befehl
+     * Konstruktor fÃ¼r einen MoveC-Befehl
      *
      * @param line
      *            Zeile im Quelltext

@@ -3,21 +3,21 @@ package simulator;
 import enviroment.MyByte;
 
 /**
- * Interface für eine Operandenspezifikation
+ * Interface fÃ¼r eine Operandenspezifikation
  */
 public interface Operand {
 
     public Operand copy();
 
     /**
-     * Gibt des Adresse des Operanden zurück
+     * Gibt des Adresse des Operanden zurÃ¼ck
      *
      * @return Adresse des Operanden
      */
     public int getAdress();
 
     /**
-     * Gibt den Inhalt des Operanden zurück
+     * Gibt den Inhalt des Operanden zurÃ¼ck
      *
      * @return Inhalt als MyByte-Array
      */
@@ -25,7 +25,7 @@ public interface Operand {
 
     /**
      * Generiert den Opcode des Operanden und gibt diesen als MyByte-Array
-     * zurück
+     * zurÃ¼ck
      *
      * @return Opcode des Operanden
      */

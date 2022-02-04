@@ -31,7 +31,7 @@ public class Register {
     private int nr;
 
     /**
-     * geandert? für die Rotfaerbung erforderlich
+     * geandert? fÃ¼r die Rotfaerbung erforderlich
      */
     private boolean changed = false;
 
@@ -61,7 +61,7 @@ public class Register {
     /**
      * Gibt den Inhalt des Registers zurueck
      *
-     * @param length Länge des Registerzurgriffs
+     * @param length LÃ¤nge des Registerzurgriffs
      * @return Inhalt des Registers
      */
     public MyByte[] getContent(int length) {
@@ -97,7 +97,7 @@ public class Register {
                         (nr + 1) % CONSTANTS.NUMBER_OF_REGISTER).getContent(4)[3];
                 return ret;
             default:
-                System.out.println("Fehlerhafte Länge bei Registerzugriff");
+                System.out.println("Fehlerhafte LÃ¤nge bei Registerzugriff");
                 return null;
         }
 
@@ -106,7 +106,7 @@ public class Register {
     /**
      * Gibt den Inhalt eines Registers als Integer zurueck
      *
-     * @param length Länge des
+     * @param length LÃ¤nge des
      * @return Inhalt eines Register
      */
     public int getContentAsInt(int length) {
@@ -212,7 +212,7 @@ public class Register {
     }
 
     /**
-     * Setzt den Änderungsstatus eines Register zurück
+     * Setzt den Ã„nderungsstatus eines Register zurÃ¼ck
      */
     public void reset() {
         changed = false;

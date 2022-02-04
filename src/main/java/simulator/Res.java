@@ -15,18 +15,20 @@ import java.util.ArrayList;
  */
 public class Res extends Command {
 
-    /** Länge der Reservierung */
+    /**
+     * LÃ¤nge der Reservierung
+     */
     int bytes = 0;
 
     /**
-     * Konstruktor für einen Res-befehl
+     * Konstruktor fÃ¼r einen Res-befehl
      *
      * @param line
      *            Zeile im Quelltext
      * @param adress
      *            Adresse des Befehls
      * @param bytes
-     *            Länge des zu reservierenden Bereiches
+     *            LÃ¤nge des zu reservierenden Bereiches
      * @param beg
      *            Zeichenposition - Beginn des Befehlswortes im Quelltext
      * @param end

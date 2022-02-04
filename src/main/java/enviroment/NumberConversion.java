@@ -6,7 +6,7 @@ package enviroment;
 public class NumberConversion {
 
     /**
-     * Addiert zwei Arrays of MyByte, wenn Sie die gleiche Länge haben
+     * Addiert zwei Arrays of MyByte, wenn Sie die gleiche LÃ¤nge haben
      *
      * @param op1 Array1
      * @param op2 Array2
@@ -140,10 +140,10 @@ public class NumberConversion {
     }
 
     /**
-     * Konvertiert ein MyByte-Array in einen Binärstring
+     * Konvertiert ein MyByte-Array in einen BinÃ¤rstring
      *
      * @param in MyByte-Array
-     * @return Binärstring
+     * @return BinÃ¤rstring
      */
     public static String myBytetoBin(MyByte[] in) {
         String ret = "";
@@ -258,7 +258,7 @@ public class NumberConversion {
      * Hegiert einen Binaerstring
      *
      * @param in     Binaerstring
-     * @param length Länge des Ergebnis Strings
+     * @param length LÃ¤nge des Ergebnis Strings
      * @return Binaerstring
      */
     public static String negateBinary(String in, int length) {
@@ -279,25 +279,25 @@ public class NumberConversion {
             pre += "1";
         }
         neu = pre + neu;
-        boolean übertrag = true;
+        boolean Ã¼bertrag = true;
         String erg = "";
         for (int i = (neu.length() - 1); i >= 0; i--) {
             switch (neu.getBytes()[i]) {
                 case '0':
-                    if (übertrag) {
+                    if (Ã¼bertrag) {
                         erg = "1" + erg;
                     } else {
                         erg = "0" + erg;
                     }
-                    übertrag = false;
+                    Ã¼bertrag = false;
                     break;
                 case '1':
-                    if (übertrag) {
+                    if (Ã¼bertrag) {
                         erg = "0" + erg;
-                        übertrag = true;
+                        Ã¼bertrag = true;
                     } else {
                         erg = "1" + erg;
-                        übertrag = false;
+                        Ã¼bertrag = false;
                     }
 
                     break;
@@ -309,7 +309,7 @@ public class NumberConversion {
     }
 
     /**
-     * Prueft ob sich eine Zhl im gültigen Zahlenraum befindet
+     * Prueft ob sich eine Zhl im gÃ¼ltigen Zahlenraum befindet
      *
      * @param number zu pruefende Zahl
      * @param length Zahlenraum (0: byte, 2; short, 4: integer)

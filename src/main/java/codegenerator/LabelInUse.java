@@ -7,22 +7,30 @@ import simulator.AbsAddress;
 import simulator.Command;
 
 /**
- * Repräsentiert einen Eintrag in der Symboltabelle für ein genutztes Label
+ * ReprÃ¤sentiert einen Eintrag in der Symboltabelle fÃ¼r ein genutztes Label
  *
  * @author Cyberdyne
  */
 public class LabelInUse {
 
-    /** Name des Labels */
+    /**
+     * Name des Labels
+     */
     private String name;
 
-    /** Befehl in welchem das Label genutzt wird. */
+    /**
+     * Befehl in welchem das Label genutzt wird.
+     */
     private Command command;
 
-    /** Operand in welchem das Label genutzt wird */
+    /**
+     * Operand in welchem das Label genutzt wird
+     */
     private AbsAddress op;
 
-    /** Zugehöriges definiertes Label */
+    /**
+     * ZugehÃ¶riges definiertes Label
+     */
     private Label label;
 
     /**
@@ -43,7 +51,7 @@ public class LabelInUse {
     }
 
     /**
-     * Gibt die Adresse zurück an welcher das Label genutzt wird
+     * Gibt die Adresse zurÃ¼ck an welcher das Label genutzt wird
      *
      * @return the adress
      */
@@ -52,16 +60,16 @@ public class LabelInUse {
     }
 
     /**
-     * Gib den zugehörigen Befehl zurück
+     * Gib den zugehÃ¶rigen Befehl zurÃ¼ck
      *
-     * @return zugehöriger Befehl
+     * @return zugehÃ¶riger Befehl
      */
     public Command getCommand() {
         return command;
     }
 
     /**
-     * Gibt den Namen zurück
+     * Gibt den Namen zurÃ¼ck
      *
      * @return Namen des Labels
      */
@@ -70,9 +78,9 @@ public class LabelInUse {
     }
 
     /**
-     * Gibt den zugehörigen Operanden zurück
+     * Gibt den zugehÃ¶rigen Operanden zurÃ¼ck
      *
-     * @return zugehöriger Operanden
+     * @return zugehÃ¶riger Operanden
      */
     public AbsAddress getOp() {
         return op;

@@ -4,7 +4,7 @@ import enviroment.MyByte;
 import enviroment.NumberConversion;
 
 /**
- * Operandenspezifikation für Direkte Operanden
+ * Operandenspezifikation fÃ¼r Direkte Operanden
  */
 public class ImmediateOperand implements Operand {
 
@@ -14,15 +14,15 @@ public class ImmediateOperand implements Operand {
     MyByte[] content = new MyByte[8];
 
     /**
-     * Länge der Operanden
+     * LÃ¤nge der Operanden
      */
     int length;
 
     /**
-     * Konstruktor für Direkte Operanden
+     * Konstruktor fÃ¼r Direkte Operanden
      *
      * @param content Speicherdarstellung des Operanden
-     * @param length  Länge der Operanden
+     * @param length  LÃ¤nge der Operanden
      */
     public ImmediateOperand(MyByte[] content, int length) {
 

@@ -7,25 +7,27 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Diese Klasse wird für dier Verwaltung von der Compileroption Equal verwendet
+ * Diese Klasse wird fÃ¼r dier Verwaltung von der Compileroption Equal verwendet
  *
  * @author Matthias Oehme
  */
 public class Equal {
 
-    /** Ersetzungsname */
+    /**
+     * Ersetzungsname
+     */
     private String name;
 
-    /** Tokenliste für die Ersetzung */
+    /**
+     * Tokenliste fÃ¼r die Ersetzung
+     */
     private ArrayList<Token> makro = new ArrayList<Token>();
 
     /**
-     * Konstruktor für ein neues Equal
+     * Konstruktor fÃ¼r ein neues Equal
      *
-     * @param name
-     *            Ersetzungsname
-     * @param makro
-     *            Tokenliste für die Ersetzung
+     * @param name  Ersetzungsname
+     * @param makro Tokenliste fÃ¼r die Ersetzung
      */
     public Equal(String name, ArrayList<Token> makro) {
         this.name = name;
@@ -33,7 +35,7 @@ public class Equal {
     }
 
     /**
-     * gibt einen Iterator zurück
+     * gibt einen Iterator zurÃ¼ck
      *
      * @return the iterator
      */
@@ -42,7 +44,7 @@ public class Equal {
     }
 
     /**
-     * Gibt den Namen zurück
+     * Gibt den Namen zurÃ¼ck
      *
      * @return Name
      */

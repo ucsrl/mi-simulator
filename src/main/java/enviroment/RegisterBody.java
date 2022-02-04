@@ -28,16 +28,16 @@ public class RegisterBody {
     }
 
     /**
-     * Gibt die Darstellung des Registerkörpers auf einem JScrollPane zurueck
+     * Gibt die Darstellung des RegisterkÃ¶rpers auf einem JScrollPane zurueck
      *
-     * @return Darstellung des Registerkörpers auf einem JScrollPane
+     * @return Darstellung des RegisterkÃ¶rpers auf einem JScrollPane
      */
     public JScrollPane getJScrollPane() {
         JPanel ret2 = new JPanel();
         JPanel ret = new JPanel();
         JComboBox chooser = new JComboBox();
         chooser.addItem("Dezimal");
-        chooser.addItem("Binär");
+        chooser.addItem("BinÃ¤r");
         chooser.addItem("Hexadezimal");
         chooser.addItem("Float");
         chooser.setSelectedIndex(Enviroment.REGVIEW);
@@ -81,7 +81,7 @@ public class RegisterBody {
      * Gibt das Register mit der Nummer nr zurueck
      *
      * @param nr     Registernummer
-     * @param length Länge des Registerzugriffs
+     * @param length LÃ¤nge des Registerzugriffs
      * @return Register mit der Nummer nr
      */
     public MyByte[] getRegister(int nr, int length) {

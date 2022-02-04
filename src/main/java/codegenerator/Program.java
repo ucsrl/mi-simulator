@@ -24,7 +24,7 @@ public class Program {
     }
 
     /**
-     * Fügt einen weiteren Befehl hinzu
+     * FÃ¼gt einen weiteren Befehl hinzu
      *
      * @param comm der neue Befehl
      */
@@ -72,7 +72,7 @@ public class Program {
     }
 
     /**
-     * Gibt die Liste der Befehle zurück
+     * Gibt die Liste der Befehle zurÃ¼ck
      *
      * @return Liste der Befehle
      */

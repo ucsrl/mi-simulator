@@ -9,22 +9,30 @@ import enviroment.NumberConversion;
 import javax.swing.*;
 
 /**
- * Klaase für die Programmausführung.
+ * Klaase fÃ¼r die ProgrammausfÃ¼hrung.
  *
  * @author Matthias Oehme
  */
 public class RunProgram extends Thread {
 
-    /** nächster Befehl */
+    /**
+     * nÃ¤chster Befehl
+     */
     private Command next;
 
-    /** Run-button */
+    /**
+     * Run-button
+     */
     private JButton button_run;
 
-    /** Restart-Button */
+    /**
+     * Restart-Button
+     */
     private JButton button_restart;
 
-    /** Stop-Button */
+    /**
+     * Stop-Button
+     */
     private JButton button_stop;
 
     /** Step-Button */
@@ -34,7 +42,7 @@ public class RunProgram extends Thread {
     private boolean stop_program = false;
 
     /**
-     * Konstrktor für einen Programmablauf
+     * Konstrktor fÃ¼r einen Programmablauf
      *
      * @param btnRun
      *            Run-button
