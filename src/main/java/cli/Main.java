@@ -65,17 +65,15 @@ public class Main {
         Map<String, Boolean> previousFlags = new HashMap<>();
         fillCurrentFlags(previousFlags);
         while (next != null) {
-//            System.out.println("INS: " + next);
+            System.out.println("INS: " + next);
             next.run();
-            if (next.toString().contains("JUMP")) {
-                printRegisterValues(previousRegValues);
-                System.out.println();
-            }
-////            printFlags(previousFlags);
-//            System.out.println();
-////            printMemoryValues(previousMemValues);
-//            System.out.println();
-//            System.out.println();
+            printRegisterValues(previousRegValues);
+            System.out.println();
+            printFlags(previousFlags);
+            System.out.println();
+            printMemoryValues(previousMemValues);
+            System.out.println();
+            System.out.println();
             if (next instanceof Halt) {
                 break; // Programmende erreicht
             }
