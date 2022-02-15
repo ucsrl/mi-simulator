@@ -9,10 +9,13 @@ Das Handbuch ist unter https://www.unibw.de/inf2/lehre/wt19/maschprog/mi-manual-
 
 ## Probleme und Änderungswünsche ##
 
-Bei Problemen mit dem MI-Simulator können Sie ein Ticket erstellen.
-Wir ersuchen Sie höflichst **keine** Lösungen (z.B: Programme) für Aufgaben in "Maschinennahe Programmierung" im Ticket zu inkludieren.
-Sollte ein Programm notwendig sein um ein Problem zu reproduzieren, können Sie uns das Programm per E-Mail zukommen lassen.
-Dies gibt anderen Studenten die Chance die Aufgaben selbstständig zu lösen.
+Bei Problemen mit dem MI-Simulator können Sie gerne ein Ticket erstellen.
+Die Beschreibung kann sowohl auf Englisch als auch auf Deutsch erfolgen.
+
+> **WICHTIG**
+> Wir ersuchen Sie höflichst **keine** Lösungen (z.B: Programme) für Aufgaben in "Maschinennahe Programmierung" im Ticket zu inkludieren.
+> Sollte ein Programm notwendig sein um ein Problem zu reproduzieren, können Sie uns das Programm per E-Mail zukommen lassen.
+> Dies gibt anderen Studenten die Chance die Aufgaben selbstständig zu lösen.
 
 ## CLI Mode ##
 
