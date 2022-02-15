@@ -7,6 +7,13 @@ unter https://www.unibw.de/inf2/lehre/wt19/maschprog/sim-test gefunden werden.
 
 Das Handbuch ist unter https://www.unibw.de/inf2/lehre/wt19/maschprog/mi-manual-pdf.pdf zu finden.
 
+## Probleme und Änderungswünsche ##
+
+Bei Problemen mit dem MI-Simulator können Sie ein Ticket erstellen.
+Wir ersuchen Sie höflichst **keine** Lösungen (z.B: Programme) für Aufgaben in "Maschinennahe Programmierung" im Ticket zu inkludieren.
+Sollte ein Programm notwendig sein um ein Problem zu reproduzieren, können Sie uns das Programm per E-Mail zukommen lassen.
+Dies gibt anderen Studenten die Chance die Aufgaben selbstständig zu lösen.
+
 ## CLI Mode ##
 
 Um das automatische Testen von MI-Programmen zu vereinfachen, wurde dem Simulator ein CLI Modus hinzugefügt.
