@@ -1,1 +1,7 @@
 blank_issues_enabled: false
+contact_links:
+- name: Maschinennahe Programmierung
+  url: https://ilias.unibw.de/
+  about: Do you have questions regarding "Maschinennahe Programmierung"?
+    Please use the forum in ILIAS or contact us via e-mail.
+    Github issues in this repository are *only* for issues with the MI Simulator program.
