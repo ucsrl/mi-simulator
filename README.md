@@ -10,6 +10,7 @@ Das Handbuch ist unter https://www.unibw.de/inf2/lehre/wt19/maschprog/mi-manual-
 ## Probleme und Änderungswünsche ##
 
 Bei Problemen mit dem MI-Simulator können Sie gerne ein Ticket erstellen.
+Auch Ideen für nützliche Zusatzfunktionen und Verbesserungen können Sie uns gerne mitteilen.
 Die Beschreibung kann sowohl auf Englisch als auch auf Deutsch erfolgen.
 
 > **WICHTIG**
