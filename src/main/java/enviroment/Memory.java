@@ -1,6 +1,7 @@
 package enviroment;
 
 import gui.CONSTANTS;
+import gui.MemoryPanel;
 import gui.MemoryTable;
 import gui.MemoryTableEntry;
 
@@ -163,9 +164,9 @@ public class Memory {
      *
      * @return Speicherdarstellung auf einer JScrollPane
      */
-    public JScrollPane getMemoryTable() {
+    public MemoryPanel getMemoryTable() {
         memoryJList.setFont(CONSTANTS.FONT);
-        JScrollPane ret = new JScrollPane(memoryJList);
+        MemoryPanel ret = new MemoryPanel(memoryJList);
 
         return ret;
     }

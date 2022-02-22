@@ -1,7 +1,7 @@
 package gui;
 
 public enum RegisterViewType {
-    BINARY("BinĂ¤r"),
+    BINARY("Binär"),
     DECIMAL("Dezimal"),
     HEX("Hexadezimal"),
     FLOAT("Float");

@@ -31,53 +31,6 @@ public class Flags {
     private boolean negative = false;
 
     /**
-     * CheckBox für die Darstellung des Carry-Flag
-     */
-    private FixedStateCheckBox carry_cb = new FixedStateCheckBox("Carry");
-
-    /**
-     * CheckBox für die Darstellung des Zero-Flag
-     */
-    private FixedStateCheckBox zero_cb = new FixedStateCheckBox("Zero");
-    ;
-
-    /**
-     * CheckBox für die Darstellung des Overflow-Flag
-     */
-    private FixedStateCheckBox overflow_cb = new FixedStateCheckBox("Overflow");
-
-    /**
-     * CheckBox für die Darstellung des Negative-Flag
-     */
-    private FixedStateCheckBox negative_cb = new FixedStateCheckBox("Negative");
-
-    /**
-     * Gibt eine JPanel mit den Flags zurueck
-     *
-     * @return JPanel mit den Flags
-     */
-    public JPanel getFlags() {
-        update();
-
-        JPanel ret_inner = new JPanel();
-        JPanel ret_outer = new JPanel();
-        ret_inner.setLayout(new FlowLayout(10));
-        ret_outer.setLayout(new FlowLayout(FlowLayout.RIGHT));
-
-        ret_inner.add(zero_cb);
-
-        ret_inner.add(overflow_cb);
-
-        ret_inner.add(carry_cb);
-
-        ret_inner.add(negative_cb);
-
-        ret_outer.add(ret_inner);
-
-        return ret_outer;
-    }
-
-    /**
      * Prueft ob das Carry-Flag gesetzt ist
      *
      * @return Carry-Flag gesetzt
@@ -148,20 +101,6 @@ public class Flags {
      */
     public void setZero(boolean zero) {
         this.zero = zero;
-    }
-
-    /**
-     * Aktualisiert die Flagdarstellung
-     */
-    public void update() {
-        overflow_cb.setFixedState(overflow);
-        // overflow_cb.paintImmediately(overflow_cb.getBounds());
-        negative_cb.setFixedState(negative);
-        // negative_cb.paintImmediately(negative_cb.getBounds());
-        zero_cb.setFixedState(zero);
-        // zero_cb.paintImmediately(zero_cb.getBounds());
-        carry_cb.setFixedState(carry);
-        // carry_cb.paintImmediately(carry_cb.getBounds());
     }
 
 }

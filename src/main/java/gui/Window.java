@@ -1,6 +1,7 @@
 package gui;
 
 import enviroment.Enviroment;
+import org.drjekyll.fontchooser.FontDialog;
 import parser.Parser;
 import scanner.Scanner;
 import simulator.Command;
@@ -19,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Diese Klasse enthält die grafischen Elemente
@@ -68,7 +70,7 @@ public class Window extends javax.swing.JFrame {
     /**
      * The about menu item.
      */
-    private JMenuItem aboutMenuItem;
+    private JMenuItem fontMenuItem;
 
     /**
      * The undo menu item.
@@ -113,7 +115,7 @@ public class Window extends javax.swing.JFrame {
     /**
      * Anzeigebereich für den Speicher
      */
-    private JScrollPane memory;
+    private MemoryPanel memory;
 
     /**
      * Anzeigebereich für die Register
@@ -123,7 +125,7 @@ public class Window extends javax.swing.JFrame {
     /**
      * Anzeige der Flags
      */
-    private JPanel flag;
+    private FlagsPanel flagsPanel;
 
     /**
      * Anzeigebereich für den Kellerspeicher
@@ -133,22 +135,8 @@ public class Window extends javax.swing.JFrame {
     /**
      * The menu_panel.
      */
-    private JPanel button_panel;
+    private ButtonPanel buttonPanel;
 
-    /**
-     * Assemble-Button
-     */
-    private JButton btnAssemble;
-
-    /**
-     * Run-Button
-     */
-    private JButton btnRun;
-
-    /**
-     * Step-Button
-     */
-    private JButton btnStep;
 
     /**
      * Nächster befehl
@@ -161,19 +149,9 @@ public class Window extends javax.swing.JFrame {
     private boolean compiled = false;
 
     /**
-     * The btn stop.
-     */
-    private JButton btnStop;
-
-    /**
      * The run.
      */
     private RunProgram run;
-
-    /**
-     * The btn restart.
-     */
-    private JButton btnRestart;
 
     /**
      * The file.
@@ -304,19 +282,21 @@ public class Window extends javax.swing.JFrame {
      * initalisiert die grafische Oberfläche
      */
     private void initGUI() {
+        Locale.setDefault(Locale.GERMAN);
+
         // Diese Methode sollte unbedingt in de nächsten Version auf mehrere
         // Klassen aufgeteilt werden.
         fc.setFileFilter(new FileNameExtensionFilter("MI-File", "mi"));
 
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         codePanel = new JPanel();
-        button_panel = new JPanel();
-        button_panel.setLayout(new FlowLayout(10));
+        buttonPanel = new ButtonPanel(compiled);
+        buttonPanel.setLayout(new FlowLayout(10));
         ober_panel = new JPanel();
         ober_panel.setLayout(new BoxLayout(ober_panel, BoxLayout.X_AXIS));
         ober_panel2 = new JPanel();
         ober_panel2.setLayout(new BoxLayout(ober_panel2, BoxLayout.Y_AXIS));
-        ober_panel2.add(button_panel);
+        ober_panel2.add(buttonPanel);
         ober_panel2.add(ober_panel);
         north_panel = new JScrollPane(ober_panel2);
 
@@ -371,11 +351,11 @@ public class Window extends javax.swing.JFrame {
                                             strContent.toString());
                                     text.setCaretPosition(0);
                                     oldtext = text.getText();
-                                    btnRestart.setEnabled(
+                                    buttonPanel.getBtnRestart().setEnabled(
                                             false);
-                                    btnRun.setEnabled(false);
-                                    btnStep.setEnabled(false);
-                                    btnStop.setEnabled(false);
+                                    buttonPanel.getBtnRun().setEnabled(false);
+                                    buttonPanel.getBtnStep().setEnabled(false);
+                                    buttonPanel.getBtnStop().setEnabled(false);
                                     updateUI();
                                     Enviroment.init();
                                     reset_Title();
@@ -413,187 +393,124 @@ public class Window extends javax.swing.JFrame {
             main_panel.setOneTouchExpandable(true);
             main_panel.setResizeWeight(0.75);
         }
+        buttonPanel.getBtnAssemble().addActionListener(e2 -> {
+            numberedPane.reset();
+            Enviroment.init();
+            scanner = new Scanner(false);
+            scanner.init(text.getText());
 
-        {
+            Parser p = new Parser(scanner);
+            p.start();
 
-            {
-                btnAssemble = new JButton("Assemble");
-                btnStop = new JButton("Stop");
-                btnRun = new JButton("Run");
-                btnRun.addKeyListener(new KeyListener() {
+            if (p.eval()) {
 
-                    @Override
-                    public void keyTyped(KeyEvent e) {
-                        if (e.getKeyCode() == KeyEvent.VK_F5) {
-                            ((JButton) e.getSource()).doClick();
-                            System.out.println("click1");
+                if (p.getProgramm().getCommands().size()
+                        > 0) {
+                    Enviroment.setProgram(
+                            p.getProgramm());
+                    Enviroment.MEMORY.setContent(0,
+                            p.getProgramm()
+                                    .getOpCode());
 
-                        }
-                        System.out.println("click1");
+                    nex = Enviroment.readNextCommand();
+                    text.highlightNextCommand();
 
-                    }
-
-                    @Override
-                    public void keyReleased(KeyEvent e) {
-                        // TODO Auto-generated method stub
-                        System.out.println("click2");
-
-                    }
-
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                        // TODO Auto-generated method stub
-                        System.out.println("click3");
-
-                    }
-                });
-
-                btnAssemble.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        numberedPane.reset();
-                        Enviroment.init();
-                        scanner = new Scanner(false);
-                        scanner.init(text.getText());
-
-                        Parser p = new Parser(scanner);
-                        p.start();
-
-                        if (p.eval()) {
-
-                            if (p.getProgramm().getCommands().size()
-                                    > 0) {
-                                Enviroment.setProgram(
-                                        p.getProgramm());
-                                Enviroment.MEMORY.setContent(0,
-                                        p.getProgramm()
-                                                .getOpCode());
-
-                                nex = Enviroment.readNextCommand();
-                                text.highlightNextCommand();
-
-                                run = new RunProgram(btnRun,
-                                        btnStop,
-                                        btnStep,
-                                        btnRestart);
-                                error.setText(
-                                        CONSTANTS.ASSEMBLE_SUCCESSFUL);
-                                compiled = true;
-                            } else {
-                                error.setText(
-                                        CONSTANTS.ASSEMBLE_UNSUCCESSFUL);
-                                compiled = false;
-                            }
-                        } else {
-                            error.setText(
-                                    p.getErrorMeassge().toString());
-                            compiled = false;
-                        }
-
-                        updateUI();
-                        if (p.getErrorMeassge().getErrorMessage().length()
-                                > 0) {
-
-                            error.setText(p.getErrorMeassge()
-                                    .getErrorMessage());
-                            compiled = false;
-                        }
-                        Enviroment.setCompiled(compiled);
-                        text.setCompiled(compiled);
-                        btnRun.setEnabled(compiled);
-                        btnStep.setEnabled(compiled);
-                        btnRestart.setEnabled(compiled);
-
-                    }
-                });
-                button_panel.add(btnAssemble);
+                    run = new RunProgram(buttonPanel.getBtnRun(),
+                            buttonPanel.getBtnStop(),
+                            buttonPanel.getBtnStep(),
+                            buttonPanel.getBtnRestart());
+                    error.setText(
+                            CONSTANTS.ASSEMBLE_SUCCESSFUL);
+                    compiled = true;
+                } else {
+                    error.setText(
+                            CONSTANTS.ASSEMBLE_UNSUCCESSFUL);
+                    compiled = false;
+                }
+            } else {
+                error.setText(
+                        p.getErrorMeassge().toString());
+                compiled = false;
             }
-            {
 
-                btnRun.setEnabled(compiled);
-                btnRun.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        btnRun.setEnabled(false);
-                        btnStop.setEnabled(true);
-                        btnStep.setEnabled(false);
-                        Enviroment.REGISTERS.reset();
-                        Enviroment.MEMORY.reset_changedList();
-                        run = new RunProgram(btnRun, btnStop, btnStep,
-                                btnRestart);
-                        run.start();
+            updateUI();
+            if (p.getErrorMeassge().getErrorMessage().length()
+                    > 0) {
 
-                        memory = Enviroment.MEMORY.getMemoryTable();
-                    }
-                });
-                button_panel.add(btnRun);
+                error.setText(p.getErrorMeassge()
+                        .getErrorMessage());
+                compiled = false;
             }
-            {
-                btnStep = new JButton("Step");
-                btnStep.setEnabled(compiled);
-                btnStep.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        Enviroment.REGISTERS.reset();
-                        Enviroment.MEMORY.reset_changedList();
-                        nex = Enviroment.getNextCommand();
+            Enviroment.setCompiled(compiled);
+            text.setCompiled(compiled);
+            buttonPanel.getBtnRun().setEnabled(compiled);
+            buttonPanel.getBtnStep().setEnabled(compiled);
+            buttonPanel.getBtnRestart().setEnabled(compiled);
 
-                        if (nex != null && !(nex instanceof Halt)) {
+        });
+        buttonPanel.getBtnRun().addActionListener(e1 -> {
+            buttonPanel.getBtnRun().setEnabled(false);
+            buttonPanel.getBtnStop().setEnabled(true);
+            buttonPanel.getBtnStep().setEnabled(false);
+            Enviroment.REGISTERS.reset();
+            Enviroment.MEMORY.reset_changedList();
+            run = new RunProgram(buttonPanel.getBtnRun(), buttonPanel.getBtnStop(), buttonPanel.getBtnStep(),
+                    buttonPanel.getBtnRestart());
+            run.start();
 
-                            nex.run();
+            memory = Enviroment.MEMORY.getMemoryTable();
+        });
+        buttonPanel.getBtnStep().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e1) {
+                Enviroment.REGISTERS.reset();
+                Enviroment.MEMORY.reset_changedList();
+                nex = Enviroment.getNextCommand();
 
-                        } else {
+                if (nex != null && !(nex instanceof Halt)) {
 
-                            btnRun.setEnabled(false);
-                            btnStep.setEnabled(false);
-                            error.setText("Programmende");
-                        }
-                        Enviroment.readNextCommand();
-                        text.highlightNextCommand();
+                    nex.run();
 
-                        updateUI();
+                } else {
 
-                    }
-                });
-                button_panel.add(btnStep);
+                    buttonPanel.getBtnRun().setEnabled(false);
+                    buttonPanel.getBtnStep().setEnabled(false);
+                    error.setText("Programmende");
+                }
+                Enviroment.readNextCommand();
+                text.highlightNextCommand();
+
+                updateUI();
+
             }
-            {
-                btnStop.setEnabled(false);
-                btnStop.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent arg0) {
-                        run.stopProgram();
-                        text.highlightNextCommand();
-                        text.highlightNextCommand();
+        });
+        buttonPanel.getBtnStop().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                run.stopProgram();
+                text.highlightNextCommand();
+                text.highlightNextCommand();
 
-                        btnStop.setEnabled(false);
-                    }
-                });
-                button_panel.add(btnStop);
+                buttonPanel.getBtnStop().setEnabled(false);
             }
-            {
-                btnRestart = new JButton("Restart");
-                btnRestart.setEnabled(compiled);
-                btnRestart.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        run.stopProgram();
-                        Enviroment.init();
-                        Enviroment.MEMORY.setContent(0,
-                                Enviroment.getProgram()
-                                        .getOpCode());
-                        nex = Enviroment.readNextCommand();
-                        text.highlightNextCommand();
-                        error.setText(CONSTANTS.ASSEMBLE_SUCCESSFUL);
-                        btnRun.setEnabled(true);
-                        btnStep.setEnabled(true);
-                        btnStop.setEnabled(false);
-                        updateUI();
-                    }
-                });
-                button_panel.add(btnRestart);
+        });
+        buttonPanel.getBtnRestart().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e1) {
+                run.stopProgram();
+                Enviroment.init();
+                Enviroment.MEMORY.setContent(0,
+                        Enviroment.getProgram()
+                                .getOpCode());
+                nex = Enviroment.readNextCommand();
+                text.highlightNextCommand();
+                error.setText(CONSTANTS.ASSEMBLE_SUCCESSFUL);
+                buttonPanel.getBtnRun().setEnabled(true);
+                buttonPanel.getBtnStep().setEnabled(true);
+                buttonPanel.getBtnStop().setEnabled(false);
+                updateUI();
             }
-        }
+        });
 
         flag_panel = new JPanel();
         codePanel.add(flag_panel);
@@ -618,10 +535,10 @@ public class Window extends javax.swing.JFrame {
                         text.setText("");
                         oldtext = "";
                         Enviroment.init();
-                        btnRestart.setEnabled(false);
-                        btnRun.setEnabled(false);
-                        btnStep.setEnabled(false);
-                        btnStop.setEnabled(false);
+                        buttonPanel.getBtnRestart().setEnabled(false);
+                        buttonPanel.getBtnRun().setEnabled(false);
+                        buttonPanel.getBtnStep().setEnabled(false);
+                        buttonPanel.getBtnStop().setEnabled(false);
                         updateUI();
 
                     }
@@ -659,11 +576,11 @@ public class Window extends javax.swing.JFrame {
                                             strContent.toString());
                                     text.setCaretPosition(0);
                                     oldtext = text.getText();
-                                    btnRestart.setEnabled(
+                                    buttonPanel.getBtnRestart().setEnabled(
                                             false);
-                                    btnRun.setEnabled(false);
-                                    btnStep.setEnabled(false);
-                                    btnStop.setEnabled(false);
+                                    buttonPanel.getBtnRun().setEnabled(false);
+                                    buttonPanel.getBtnStep().setEnabled(false);
+                                    buttonPanel.getBtnStop().setEnabled(false);
                                     updateUI();
                                     Enviroment.init();
                                     reset_Title();
@@ -851,6 +768,23 @@ public class Window extends javax.swing.JFrame {
                 settings_menu.add(showLeadingZerosItem);
                 showLeadingZerosItem.setText("Führende Nullen anzeigen");
                 showLeadingZerosItem.setState(Enviroment.showLeadingZeros);
+
+                fontMenuItem = new JMenuItem("Schriftart ändern");
+                fontMenuItem.addActionListener(e -> {
+                    FontDialog fontDialog = new FontDialog(this, true);
+                    fontDialog.setSelectedFont(text.getFont());
+                    fontDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    fontDialog.setVisible(true);
+                    if (!fontDialog.isCancelSelected()) {
+                        Font selectedFont = fontDialog.getSelectedFont();
+                        text.setFont(selectedFont);
+                        registerPanel.setFontSize(selectedFont.getSize());
+                        flagsPanel.setFontSize(selectedFont.getSize());
+                        buttonPanel.setFontSize(selectedFont.getSize());
+                        memory.setFontSize(selectedFont.getSize());
+                    }
+                });
+                settings_menu.add(fontMenuItem);
             }
         }
 
@@ -860,8 +794,8 @@ public class Window extends javax.swing.JFrame {
             jMenu5.setText("Über");
             {
 
-                aboutMenuItem = new JMenuItem();
-                aboutMenuItem.addActionListener(new ActionListener() {
+                fontMenuItem = new JMenuItem();
+                fontMenuItem.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
@@ -871,8 +805,8 @@ public class Window extends javax.swing.JFrame {
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
                 });
-                jMenu5.add(aboutMenuItem);
-                aboutMenuItem.setText("Über");
+                jMenu5.add(fontMenuItem);
+                fontMenuItem.setText("Über");
             }
         }
         getContentPane().add(main_panel);
@@ -964,10 +898,10 @@ public class Window extends javax.swing.JFrame {
         Enviroment.getLabelWindow().setVisible(false);
         error.setText("");
         text.setCompiled(false);
-        btnRun.setEnabled(false);
-        btnStep.setEnabled(false);
-        btnStop.setEnabled(false);
-        btnRestart.setEnabled(false);
+        buttonPanel.getBtnRun().setEnabled(false);
+        buttonPanel.getBtnStep().setEnabled(false);
+        buttonPanel.getBtnStop().setEnabled(false);
+        buttonPanel.getBtnRestart().setEnabled(false);
         Enviroment.init();
         updateUI();
     }
@@ -979,17 +913,15 @@ public class Window extends javax.swing.JFrame {
         if (Enviroment.getNextCommand() != null
                 && Enviroment.getNextCommand() instanceof Halt) {
             error.setText(CONSTANTS.PROGRAM_END);
-            btnRun.setEnabled(false);
-            btnStep.setEnabled(false);
+            buttonPanel.getBtnRun().setEnabled(false);
+            buttonPanel.getBtnStep().setEnabled(false);
         }
 
         registerPanel.updateRegisterValues();
 
-        Enviroment.flags.update();
-
         int val = (memory == null) ? 0 : memory.getVerticalScrollBar().getValue();
         int val2 = (stack == null) ? 0 : stack.getVerticalScrollBar().getValue();
-        flag = Enviroment.flags.getFlags();
+        flagsPanel = new FlagsPanel(Enviroment.flags);
 
         JPanel instr_panel = new JPanel();
         if (compiled) {
@@ -1001,12 +933,12 @@ public class Window extends javax.swing.JFrame {
             instr_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
             instr_panel.add(instr);
         }
-        flag.setLayout(new FlowLayout(FlowLayout.CENTER));
+        flagsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         flag_panel.setLayout(new BoxLayout(flag_panel, BoxLayout.Y_AXIS));
 
         flag_panel.removeAll();
 
-        flag_panel.add(flag);
+        flag_panel.add(flagsPanel);
         flag_panel.add(instr_panel);
 
         text.highlightNextCommand();

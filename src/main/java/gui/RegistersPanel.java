@@ -100,4 +100,8 @@ class RegistersPanel extends JPanel {
 
         return new JScrollPane(chooserAndRegisters);
     }
+
+    public void setFontSize(int size) {
+        GuiUtils.changeFont(this, size);
+    }
 }

@@ -13,7 +13,7 @@ import javax.swing.*;
  *
  * @author Matthias Oehme
  */
-public class MyLabel extends JLabel {
+public class LineNumberLabel extends JLabel {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ public class MyLabel extends JLabel {
      * @param icon2
      *            Icon2
      */
-    public MyLabel(String name, ImageIcon icon1, ImageIcon icon2) {
+    public LineNumberLabel(String name, ImageIcon icon1, ImageIcon icon2) {
         super(name);
         setOpaque(true);
         this.icon1 = icon1;

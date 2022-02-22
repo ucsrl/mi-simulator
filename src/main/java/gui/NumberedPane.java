@@ -5,6 +5,8 @@ import enviroment.Enviroment;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -27,7 +29,7 @@ public class NumberedPane extends JPanel {
     /**
      * JTextPane
      */
-    private HighlightedJPane pane;
+    private HighlightedJPane textPane;
 
     /**
      * JScrollPane auf dem das ganze angezeigt wird
@@ -37,7 +39,7 @@ public class NumberedPane extends JPanel {
     /**
      * Array mit Labeln
      */
-    private MyLabel[] label = new MyLabel[10000000];
+    private List<LineNumberLabel> lineNumberLabels = new ArrayList<>();
 
     /**
      * The max.
@@ -68,7 +70,7 @@ public class NumberedPane extends JPanel {
         setMinimumSize(new Dimension(50, 40));
         setPreferredSize(new Dimension(50, 40));
 
-        pane = new HighlightedJPane() {
+        textPane = new HighlightedJPane() {
             /**
              *
              */
@@ -87,12 +89,12 @@ public class NumberedPane extends JPanel {
             }
         };
 
-        scrollPane = new JScrollPane(pane);
+        scrollPane = new JScrollPane(textPane);
 
         scrollPane.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                pane.setSize(new Dimension(scrollPane.getWidth() - 20,
+                textPane.setSize(new Dimension(scrollPane.getWidth() - 20,
                         scrollPane.getHeight() - 20));
             }
         });
@@ -112,7 +114,7 @@ public class NumberedPane extends JPanel {
      * @return the text pane
      */
     public HighlightedJPane getTextPane() {
-        return pane;
+        return textPane;
     }
 
     /*
@@ -126,54 +128,51 @@ public class NumberedPane extends JPanel {
 
         // We need to properly convert the points to match the view port
         // Read docs for view port
-        int start = pane.viewToModel(scrollPane.getViewport().getViewPosition());
+        int start = textPane.viewToModel(scrollPane.getViewport().getViewPosition());
         // starting pos in document
-        int end = pane.viewToModel(
-                new Point(scrollPane.getViewport().getViewPosition().x + pane.getWidth(),
-                        scrollPane.getViewport().getViewPosition().y + pane.getHeight()));
+        int end = textPane.viewToModel(
+                new Point(scrollPane.getViewport().getViewPosition().x + textPane.getWidth(),
+                        scrollPane.getViewport().getViewPosition().y + textPane.getHeight()));
         // end pos in doc
 
         // translate offsets to lines
-        Document doc = pane.getDocument();
+        Document doc = textPane.getDocument();
         int startline = doc.getDefaultRootElement().getElementIndex(start) + 1;
         int endline = doc.getDefaultRootElement().getElementIndex(end) + 1;
 
-        int fontHeight = g.getFontMetrics(pane.getFont()).getHeight();
-        int fontDesc = g.getFontMetrics(pane.getFont()).getDescent();
+        int fontHeight = g.getFontMetrics(textPane.getFont()).getHeight();
+        int fontDesc = g.getFontMetrics(textPane.getFont()).getDescent();
         int starting_y = -1;
 
         try {
-            starting_y = pane.modelToView(start).y - scrollPane.getViewport()
+            starting_y = textPane.modelToView(start).y - scrollPane.getViewport()
                     .getViewPosition().y
                     + fontHeight - fontDesc;
         } catch (BadLocationException e1) {
             e1.printStackTrace();
         }
         int merke = 0;
-        for (int i = 1; i < max; i++) {
-            try {
-                this.remove(label[i]);
-            } catch (Exception e) {
-
-            }
+        for (LineNumberLabel lineNumberLabel : lineNumberLabels) {
+            this.remove(lineNumberLabel);
         }
+
+        if (endline <= lineNumberLabels.size()) {
+            lineNumberLabels.subList(endline, lineNumberLabels.size()).clear();
+        }
+
+
         for (int line = startline, y = starting_y;
              line <= endline; y += fontHeight, line++) {
-            if (label[line] == null) {
-                MyLabel bla = new MyLabel(Integer.toString(line), icon1, icon2);
-                label[line] = bla;
-                label[line].addMouseListener(new MouseAdapter() {
+            if (line > lineNumberLabels.size()) {
+                LineNumberLabel newLabel = new LineNumberLabel(Integer.toString(line), icon1, icon2);
+                newLabel.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent arg0) {
                         if (arg0.getClickCount() == 2) {
 
                             if (Enviroment.compiled) {
-                                MyLabel inp = (MyLabel) arg0.getSource();
-                                if (inp.getStatus()) {
-                                    inp.setStatus(false);
-                                } else {
-                                    inp.setStatus(true);
-                                }
+                                LineNumberLabel inp = (LineNumberLabel) arg0.getSource();
+                                inp.setStatus(!inp.getStatus());
 
                             } else {
                                 JOptionPane.showMessageDialog(
@@ -186,9 +185,14 @@ public class NumberedPane extends JPanel {
                         }
                     }
                 });
+                lineNumberLabels.add(newLabel);
+
             }
-            this.add(label[line]);
-            label[line].setBounds(0, y - 15, 40, 20);
+            LineNumberLabel label = lineNumberLabels.get(line - 1);
+            label.setBounds(0, y - 15, 40, 20);
+            Font currentFont = label.getFont();
+            label.setFont(currentFont.deriveFont(currentFont.getStyle(), textPane.getFont().getSize()));
+            this.add(label);
             merke++;
         }
 
@@ -200,7 +204,7 @@ public class NumberedPane extends JPanel {
      * Reset.
      */
     public void reset() {
-        for (MyLabel lab : label) {
+        for (LineNumberLabel lab : lineNumberLabels) {
             if (lab != null) {
                 lab.reset();
             }
