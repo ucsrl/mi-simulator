@@ -18,6 +18,11 @@ Die Beschreibung kann sowohl auf Englisch als auch auf Deutsch erfolgen.
 > Sollte ein Programm notwendig sein um ein Problem zu reproduzieren, können Sie uns das Programm per E-Mail zukommen lassen.
 > Dies gibt anderen Studenten die Chance die Aufgaben selbstständig zu lösen.
 
+## JARs erstellen ##
+
+Um ausführbare JAR Dateien zu erstellen kann das inkludierte Gradle script verwendet werden.
+`./gradlew jar` für die GUI-Version des Simulators bzw. `./gradlew cli-jar` für die CLI-Version des Simulators.
+
 ## CLI Mode ##
 
 Um das automatische Testen von MI-Programmen zu vereinfachen, wurde dem Simulator ein CLI Modus hinzugefügt.
