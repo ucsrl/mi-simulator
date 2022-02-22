@@ -22,6 +22,7 @@ Die Beschreibung kann sowohl auf Englisch als auch auf Deutsch erfolgen.
 
 Um ausführbare JAR Dateien zu erstellen kann das inkludierte Gradle script verwendet werden.
 `./gradlew jar` für die GUI-Version des Simulators bzw. `./gradlew cli-jar` für die CLI-Version des Simulators.
+Die erstellten JAR Dateien befinden sich dann unter `build/libs`.
 
 ## CLI Mode ##
 
