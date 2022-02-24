@@ -1,0 +1,15 @@
+sqrt:     SEG
+          JUMP start
+a:        DD F 2.0
+start:    MOVE F I 1.0, R0
+loop:     MOVE F R0, R1
+          DIV F R0, a, R0
+          ADD F R1, R0
+          MULT F I 0.5, R0
+          SUB F R1, R0, R2
+          JGT pos
+          MULT F I -1, R2
+pos:      CMP F R2, I 1E-10
+          JGT loop
+          HALT
+          END
