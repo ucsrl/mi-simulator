@@ -218,7 +218,7 @@ public class Sub extends Command {
                                     ((CellarAddressing) op2).getContentWithoutOffset() :
                                     op2.getContent()));
                     Double erg_11 = ope22 - ope11;
-                    erg = NumberConversion.intToByte(Double.doubleToLongBits(erg_11),
+                    erg = NumberConversion.longToByte(Double.doubleToLongBits(erg_11),
                             length);
 
                     Enviroment.flags.setZero(erg_11 == 0);

@@ -1,5 +1,7 @@
 package enviroment;
 
+import java.util.Objects;
+
 /**
  * Diese Klasse repraesentier ein Byte
  */
@@ -8,12 +10,16 @@ public class MyByte {
     /**
      * Wert den Bytes als Integer
      */
-    private int content;
+    private byte content;
 
     /**
      * Carryflag
      */
     private boolean carry = false;
+
+    public MyByte(byte content) {
+        this.content = content;
+    }
 
     /**
      * Konstruktor
@@ -21,10 +27,7 @@ public class MyByte {
      * @param content Wert den Bytes
      */
     public MyByte(int content) {
-        this.content = content % 256;
-        if (content > 255) {
-            carry = true;
-        }
+        setContent(content);
     }
 
     /**
@@ -34,7 +37,7 @@ public class MyByte {
      */
     public MyByte(String hex) {
         int content = Integer.parseInt(hex, 16);
-        this.content = content % 256;
+        this.content = (byte) (content % 256);
         if (content > 255) {
             carry = true;
         }
@@ -65,8 +68,21 @@ public class MyByte {
      * @param one MyByte
      * @return true, if successful
      */
-    public boolean equal(MyByte one) {
+    public boolean hasSameContent(MyByte one) {
         return getContent() == one.getContent();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyByte myByte = (MyByte) o;
+        return content == myByte.content && carry == myByte.carry;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(content, carry);
     }
 
     /**
@@ -84,7 +100,7 @@ public class MyByte {
      * @return Inhalt als Integer
      */
     public int getContent() {
-        return content;
+        return ((int)content) & 0xFF;
     }
 
     /**
@@ -93,34 +109,19 @@ public class MyByte {
      * @return zu negierendes MyByte
      */
     public MyByte negate() {
-        StringBuffer neu = new StringBuffer();
-        String bin = Integer.toBinaryString(content);
-        for (int i = 0; i < bin.length(); i++) {
-            switch (bin.getBytes()[i]) {
-                case '0':
-                    neu.append("1");
-                    break;
-                case '1':
-                    neu.append("0");
-                    break;
-            }
-
-        }
-        int x = neu.length();
-        for (int i = 0; i < 8 - x; i++) {
-            neu = neu.reverse().append("1").reverse();
-        }
-        return new MyByte(Integer.parseInt(neu.toString(), 2));
-
+        return new MyByte(getContent() ^ 0xff);
     }
 
     /**
      * Setzt den Inhalt des MyByte
      *
-     * @param con neuer Inhalt
+     * @param content neuer Inhalt
      */
-    public void setContent(int con) {
-        content = con;
+    public void setContent(int content) {
+        this.content = (byte) (content % 256);
+        if (content > 255) {
+            carry = true;
+        }
     }
 
     /*
@@ -130,7 +131,7 @@ public class MyByte {
      */
     @Override
     public String toString() {
-        String ret = Integer.toString(content, 16).toUpperCase();
+        String ret = Integer.toString(getContent(), 16).toUpperCase();
 
         return (ret.length() == 1) ? "0" + ret : ret;
     }

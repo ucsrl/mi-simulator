@@ -228,7 +228,7 @@ public class Memory {
      */
     public void reset() {
         for (MyByte value : changedCells.values()) {
-            value.setContent(0);
+            value.setContent((byte) 0);
         }
 
         changedCells = new HashMap<>();
@@ -253,7 +253,7 @@ public class Memory {
 
         for (int i = 0; i < content.length; i++) {
             int address = begin + i;
-            memory[address].setContent(content[i].getContent()); // new
+            memory[address].setContent((byte) content[i].getContent()); // new
             // MyByte(content[i].getContent());
             changed_list.add(memory[address]);
             changedCells.put(address, memory[address]);

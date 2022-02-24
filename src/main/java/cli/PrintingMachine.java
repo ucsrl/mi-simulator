@@ -6,6 +6,7 @@ import enviroment.Register;
 import gui.CONSTANTS;
 import simulator.Command;
 
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -115,7 +116,7 @@ class PrintingMachine implements IMachine {
         Separator separator = new Separator(out);
         for (int i = 0; i < CONSTANTS.NUMBER_OF_REGISTER; i++) {
             Register register = Enviroment.REGISTERS.getRegister(i);
-            int regValue = register.getContentAsInt(4);
+            int regValue = register.getContentAsNumber(4);
             if (previousRegValues[i] == regValue && regValue == 0)
                 continue;
             if (previousRegValues[i] != regValue) {

@@ -158,7 +158,7 @@ public class MoveN extends Command {
                                     op1.getContent())) * -1), length);
                     break;
                 case 8:
-                    ret = NumberConversion.intToByte(Double.doubleToLongBits(
+                    ret = NumberConversion.longToByte(Double.doubleToLongBits(
                             Double.longBitsToDouble(
                                     NumberConversion.myBytetoLongWithoutSign(
                                             op1.getContent())) * -1), length);

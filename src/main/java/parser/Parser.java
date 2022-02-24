@@ -1080,7 +1080,7 @@ public class Parser {
                                             Double a = Double.parseDouble(
                                                     ret.getText());
                                             list.add(new ImmediateOperand(
-                                                    NumberConversion.intToByte(
+                                                    NumberConversion.longToByte(
                                                             Double.doubleToLongBits(
                                                                     a), length),
                                                     length));
@@ -1126,7 +1126,7 @@ public class Parser {
                                             Double a = Double.parseDouble(
                                                     ret.getText());
                                             list.add(new ImmediateOperand(
-                                                    NumberConversion.intToByte(
+                                                    NumberConversion.longToByte(
                                                             Double.doubleToLongBits(
                                                                     a), length),
                                                     length));
@@ -1313,7 +1313,7 @@ public class Parser {
                             try {
                                 Double a = Double.parseDouble(ret.getText());
                                 list.add(new ImmediateOperand(
-                                        NumberConversion.intToByte(
+                                        NumberConversion.longToByte(
                                                 Double.doubleToLongBits(a), length),
                                         length));
                                 ret = scanner.getNextSymbol();
@@ -1360,7 +1360,7 @@ public class Parser {
                                     Double a = Double.parseDouble(
                                             ret.getText());
                                     list.add(new ImmediateOperand(
-                                            NumberConversion.intToByte(
+                                            NumberConversion.longToByte(
                                                     Double.doubleToLongBits(a),
                                                     length), length));
                                     ret = scanner.getNextSymbol();

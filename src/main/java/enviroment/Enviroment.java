@@ -76,9 +76,8 @@ public class Enviroment {
      * @param value Wert der addiert wird
      */
     public static void addToPC(int value) {
-        REGISTERS.getRegister(CONSTANTS.PC_REGISTER).setContent(NumberConversion.intToByte(
-                REGISTERS.getRegister(CONSTANTS.PC_REGISTER).getContentAsInt(4) + value,
-                4));
+        Register pcRegister = REGISTERS.getRegister(CONSTANTS.PC_REGISTER);
+        pcRegister.setContentAsNumber(pcRegister.getContentAsNumber(4) + value);
     }
 
     /**
@@ -112,7 +111,7 @@ public class Enviroment {
      * @return Befehlszzaehler
      */
     public static int getPC() {
-        return REGISTERS.getRegister(CONSTANTS.PC_REGISTER).getContentAsInt(4);
+        return REGISTERS.getRegister(CONSTANTS.PC_REGISTER).getContentAsNumber(4);
     }
 
     /**
@@ -122,7 +121,7 @@ public class Enviroment {
      */
     public static int getPCFromMemory() {
         return NumberConversion.myBytetoIntWithoutSign(MEMORY.getContent(
-                REGISTERS.getRegister(CONSTANTS.PC_REGISTER).getContentAsInt(4), 1));
+                REGISTERS.getRegister(CONSTANTS.PC_REGISTER).getContentAsNumber(4), 1));
     }
 
     /**

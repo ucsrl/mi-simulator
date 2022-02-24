@@ -218,7 +218,7 @@ public class Add extends Command {
                                     op2.getContent()));
                     Double erg_11 = ope11 + ope22;
                     // System.out.println(ope22 +" + " + ope11 +" = " + erg_11);
-                    erg = NumberConversion.intToByte(Double.doubleToLongBits(erg_11),
+                    erg = NumberConversion.longToByte(Double.doubleToLongBits(erg_11),
                             length);
 
                     Enviroment.flags.setZero(erg_11 == 0);

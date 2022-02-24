@@ -103,7 +103,7 @@ public class NumberConversion {
      * @param length Laenge des Arrays
      * @return Ergebnis als MyByte-Array
      */
-    public static MyByte[] intToByte(long in, int length) {
+    public static MyByte[] longToByte(long in, int length) {
         MyByte[] ret = new MyByte[length];
         boolean neg = false;
 
@@ -131,7 +131,7 @@ public class NumberConversion {
         }
 
         for (int i = 0; i < one.length; i++) {
-            if (!one[i].equal(two[i])) {
+            if (!one[i].hasSameContent(two[i])) {
                 return false;
             }
 

@@ -1010,7 +1010,7 @@ public class Interpreter {
             case 252:
                 return jbcci(pc);
             default:
-                return null;
+                throw new IllegalStateException("Unknown opcode " + opcode);
         }
     }
 

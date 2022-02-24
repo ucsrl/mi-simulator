@@ -2,6 +2,9 @@ package enviroment;
 
 import gui.CONSTANTS;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
 /**
  * Diese Klasse repaesentier ein Register der MI
  */
@@ -10,7 +13,7 @@ public class Register {
     /**
      * Inhalt des Registers
      */
-    MyByte[] content = new MyByte[4];
+    private int content;
 
     /**
      * Stackregister?
@@ -33,7 +36,7 @@ public class Register {
      * @param nr Registerbummer
      */
     public Register(int nr) {
-        content = NumberConversion.intToByte(0, 4);
+        content = 0;
         this.nr = nr;
     }
 
@@ -54,42 +57,22 @@ public class Register {
      * @return Inhalt des Registers
      */
     public MyByte[] getContent(int length) {
-        MyByte[] ret;
-        switch (length) {
-            case 1:
-                return new MyByte[]{new MyByte(content[3].getContent())};
-            case 2:
-                ret = new MyByte[2];
-                ret[0] = new MyByte(content[2].getContent());
-                ret[1] = new MyByte(content[3].getContent());
-                return ret;
-            case 4:
-                ret = new MyByte[4];
-                ret[0] = new MyByte(content[0].getContent());
-                ret[1] = new MyByte(content[1].getContent());
-                ret[2] = new MyByte(content[2].getContent());
-                ret[3] = new MyByte(content[3].getContent());
-                return ret;
-            case 8:
-                ret = new MyByte[8];
-                ret[0] = new MyByte(content[0].getContent());
-                ret[1] = new MyByte(content[1].getContent());
-                ret[2] = new MyByte(content[2].getContent());
-                ret[3] = new MyByte(content[3].getContent());
-                ret[4] = Enviroment.REGISTERS.getRegister(
-                        (nr + 1) % CONSTANTS.NUMBER_OF_REGISTER).getContent(4)[0];
-                ret[5] = Enviroment.REGISTERS.getRegister(
-                        (nr + 1) % CONSTANTS.NUMBER_OF_REGISTER).getContent(4)[1];
-                ret[6] = Enviroment.REGISTERS.getRegister(
-                        (nr + 1) % CONSTANTS.NUMBER_OF_REGISTER).getContent(4)[2];
-                ret[7] = Enviroment.REGISTERS.getRegister(
-                        (nr + 1) % CONSTANTS.NUMBER_OF_REGISTER).getContent(4)[3];
-                return ret;
-            default:
-                System.out.println("Fehlerhafte Länge bei Registerzugriff");
-                return null;
+        assert length == 1 || length == 2 || length == 4 || length == 8;
+        ByteBuffer buffer = ByteBuffer.allocate(length).order(ByteOrder.BIG_ENDIAN);
+        buffer.putInt(content);
+        if (length == 8) {
+            Register next = Enviroment.REGISTERS.getRegister(
+                    (nr + 1) % CONSTANTS.NUMBER_OF_REGISTER);
+            buffer.putInt(next.getContentAsNumber(4));
         }
 
+        byte[] bytes = buffer.array();
+        MyByte[] result = new MyByte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = new MyByte(bytes[i]);
+        }
+
+        return result;
     }
 
     /**
@@ -98,8 +81,14 @@ public class Register {
      * @param length Länge des
      * @return Inhalt eines Register
      */
-    public int getContentAsInt(int length) {
-        return NumberConversion.myBytetoIntWithSign(getContent(length));
+    public int getContentAsNumber(int length) {
+        assert length > 0 && length <= 4;
+        // TODO: strip to length
+        return this.content;
+    }
+
+    public void setContentAsNumber(int value) {
+        this.content = value;
     }
 
     /**
@@ -108,30 +97,19 @@ public class Register {
      * @param content Inhalt
      */
     public void setContent(MyByte[] content) {
-        switch (content.length) {
-            case 1:
-                this.content[3] = new MyByte(content[0].getContent());
-                break;
-            case 2:
-                this.content[2] = new MyByte(content[0].getContent());
-                this.content[3] = new MyByte(content[1].getContent());
-                break;
-            case 4:
-                this.content[0] = new MyByte(content[0].getContent());
-                this.content[1] = new MyByte(content[1].getContent());
-                this.content[2] = new MyByte(content[2].getContent());
-                this.content[3] = new MyByte(content[3].getContent());
-                break;
-            case 8:
-                this.content[0] = new MyByte(content[0].getContent());
-                this.content[1] = new MyByte(content[1].getContent());
-                this.content[2] = new MyByte(content[2].getContent());
-                this.content[3] = new MyByte(content[3].getContent());
-                Enviroment.REGISTERS.getRegister((nr + 1) % CONSTANTS.NUMBER_OF_REGISTER)
-                        .setContent(new MyByte[]{content[4], content[5],
-                                content[6], content[7]});
-                break;
+        int length = content.length;
+        assert length == 1 || length == 2 || length == 4 || length == 8;
+
+        ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES).order(ByteOrder.BIG_ENDIAN);
+        for (int i = 0; i < 4; i++) {
+            buffer.put((byte) content[i].getContent());
         }
+        this.content = buffer.rewind().getInt();
+        if (content.length == 8) {
+            Register next = Enviroment.REGISTERS.getRegister((nr + 1) % CONSTANTS.NUMBER_OF_REGISTER);
+            next.setContent(new MyByte[]{content[4], content[5], content[6], content[7]});
+        }
+
         if (isStack && Enviroment.STACKBEGIN == 0) {
             Enviroment.STACKBEGIN = NumberConversion.myBytetoIntWithSign(content);
         }

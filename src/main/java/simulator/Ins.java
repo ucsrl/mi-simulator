@@ -164,7 +164,7 @@ public class Ins extends Command {
         bitfield <<= sh_li;
         bitfield >>= sh_li;
 
-        MyByte[] ret = NumberConversion.intToByte(bitfield, 4);
+        MyByte[] ret = NumberConversion.longToByte(bitfield, 4);
         // op4.setContent(ret, 4);
 
     }
