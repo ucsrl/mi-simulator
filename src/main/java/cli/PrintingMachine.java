@@ -6,7 +6,6 @@ import enviroment.Register;
 import gui.CONSTANTS;
 import simulator.Command;
 
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,14 +14,17 @@ class PrintingMachine implements IMachine {
     private final IMachine inner;
     private final PrintStream out;
 
+    private final boolean printHex;
+
     private final int[] previousRegValues = new int[CONSTANTS.NUMBER_OF_REGISTER];
     private final Map<Integer, MyByte> previousMemValues = new HashMap<>();
     private final Map<String, Boolean> previousFlags = new HashMap<>();
     private boolean initialized;
 
-    PrintingMachine(IMachine inner, PrintStream out) {
+    PrintingMachine(IMachine inner, PrintStream out, boolean printHex) {
         this.inner = inner;
         this.out = out;
+        this.printHex = printHex;
     }
 
     @Override
@@ -83,9 +85,21 @@ class PrintingMachine implements IMachine {
         Separator separator = new Separator(out);
         for (String flag : flags.keySet()) {
             if (flags.get(flag) != previousFlags.get(flag)) {
-                separator.printColumn(String.format("%s: %d -> %d", flag, asBit(previousFlags.get(flag)), asBit(flags.get(flag))));
+                String format;
+                if (!printHex) {
+                    format = "%s: %d -> %d";
+                } else {
+                    format = "%s: %02X -> %02X";
+                }
+                separator.printColumn(String.format(format, flag, asBit(previousFlags.get(flag)), asBit(flags.get(flag))));
             } else {
-                separator.printColumn(String.format("%s: %d", flag, asBit(flags.get(flag))));
+                String format;
+                if (!printHex) {
+                    format = "%s: %d";
+                } else {
+                    format = "%s: %02X";
+                }
+                separator.printColumn(String.format(format, flag, asBit(flags.get(flag))));
             }
         }
         fillCurrentFlags(previousFlags);
@@ -105,9 +119,22 @@ class PrintingMachine implements IMachine {
 
             previousMemValues.put(address, changes.get(address));
             if (previousValue != currentValue) {
-                separator.printColumn(String.format("%d: %d -> %d", address, previousValue, currentValue));
+                String format;
+                if (!printHex) {
+                    format = "%d: %d -> %d";
+                } else {
+                    format = "%02X: %02X -> %02X";
+                }
+                separator.printColumn(String.format(format, address, previousValue, currentValue));
             } else {
-                separator.printColumn(String.format("%d: %d", address, currentValue));
+                String format;
+                if (!printHex) {
+                    format = "%d: %d";
+                } else {
+                    format = "%02X: %02X";
+                }
+
+                separator.printColumn(String.format(format, address, currentValue));
             }
         }
     }
@@ -120,9 +147,21 @@ class PrintingMachine implements IMachine {
             if (previousRegValues[i] == regValue && regValue == 0)
                 continue;
             if (previousRegValues[i] != regValue) {
-                separator.printColumn(String.format("R%s: %d -> %d", i, previousRegValues[i], regValue));
+                String format;
+                if (!printHex) {
+                    format = "R%s: %d -> %d";
+                } else {
+                    format = "R%s: %02X -> %02X";
+                }
+                separator.printColumn(String.format(format, i, previousRegValues[i], regValue));
             } else {
-                separator.printColumn(String.format("R%s: %d", i, regValue));
+                String format;
+                if (!printHex) {
+                    format = "R%s: %d";
+                } else {
+                    format = "R%s: %02X";
+                }
+                separator.printColumn(String.format(format, i, regValue));
             }
             previousRegValues[i] = regValue;
             register.reset();

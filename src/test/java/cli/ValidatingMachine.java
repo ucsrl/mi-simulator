@@ -3,7 +3,6 @@ package cli;
 import simulator.Command;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
 
 class ValidatingMachine implements IMachine {
@@ -14,7 +13,7 @@ class ValidatingMachine implements IMachine {
     private int referenceIndex = 0;
 
     ValidatingMachine(IMachine inner, String referenceLines) {
-        this.inner = new PrintingMachine(inner, new PrintStream(result));
+        this.inner = new PrintingMachine(inner, new PrintStream(result), false);
         this.referenceLines = referenceLines.split(System.lineSeparator(), -1);
     }
 

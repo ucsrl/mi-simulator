@@ -1,25 +1,8 @@
 package cli;
 
-import codegenerator.Program;
-import enviroment.Enviroment;
-import enviroment.MyByte;
-import enviroment.NumberConversion;
-import enviroment.Register;
-import gui.CONSTANTS;
-import parser.Parser;
-import scanner.Scanner;
-import simulator.Command;
-import simulator.Halt;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,6 +11,7 @@ public class Main {
             System.exit(1);
         }
 
+        // TODO: use proper commandline parsing
         // load the program text
         String programText = null;
         try {
@@ -44,23 +28,41 @@ public class Main {
         }
 
         // load the state file if any
-        if (args.length > 1) {
-            String stateText = null;
-            try {
-                stateText = new String(Files.readAllBytes(new File(args[1]).toPath()));
-            } catch (IOException e) {
-                e.printStackTrace();
+        boolean useHex = false;
+        if (args.length > 2) {
+            if (args[2].equals("-useHex")) {
+                useHex = true;
+            } else {
+                System.err.println("Unknown argument " + args[2]);
                 System.exit(1);
             }
-            MachineUtils.loadState(stateText);
         }
 
-        runProgram();
+        if (args.length > 1) {
+            String stateText = null;
+
+            if (args[1].equals("-useHex")) {
+                useHex = true;
+            } else {
+                try {
+                    stateText = new String(Files.readAllBytes(new File(args[1]).toPath()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.exit(1);
+                }
+
+                MachineUtils.loadState(stateText, useHex);
+            }
+        }
+
+
+
+        runProgram(useHex);
         System.exit(0);
     }
 
-    private static void runProgram() {
-        PrintingMachine machine = new PrintingMachine(new MIMachine(), System.out);
+    private static void runProgram(boolean useHex) {
+        PrintingMachine machine = new PrintingMachine(new MIMachine(), System.out, useHex);
         while (!machine.hasHalted()) {
             machine.executeNext();
         }

@@ -34,9 +34,10 @@ public class MachineUtils {
         return true;
     }
 
-    public static void loadState(String state) {
+    public static void loadState(String state, boolean useHex) {
         String[] components = state.split("[\\n;]");
 
+        int radix = useHex ? 16 : 10;
         for (String component : components) {
             String trimmed = component.trim();
             if (trimmed.isEmpty()) continue;
@@ -58,33 +59,33 @@ public class MachineUtils {
             }
 
             if (key.startsWith("R")) {
-                int regNum = Integer.parseInt(key.replace("R", ""));
-                Enviroment.REGISTERS.getRegister(regNum).setContent(NumberConversion.intToByte(Integer.parseInt(value), 4));
+                int regNum = Integer.parseInt(key.replace("R", ""), radix);
+                Enviroment.REGISTERS.getRegister(regNum).setContent(NumberConversion.intToByte(Integer.parseInt(value, radix), 4));
                 continue;
             }
 
             if (key.startsWith("C")) {
-                Enviroment.flags.setCarry(Integer.parseInt(value) == 1);
+                Enviroment.flags.setCarry(Integer.parseInt(value, radix) == 1);
                 continue;
             }
 
             if (key.startsWith("V")) {
-                Enviroment.flags.setOverflow(Integer.parseInt(value) == 1);
+                Enviroment.flags.setOverflow(Integer.parseInt(value, radix) == 1);
                 continue;
             }
 
             if (key.startsWith("Z")) {
-                Enviroment.flags.setZero(Integer.parseInt(value) == 1);
+                Enviroment.flags.setZero(Integer.parseInt(value, radix) == 1);
                 continue;
             }
 
             if (key.startsWith("N")) {
-                Enviroment.flags.setNegative(Integer.parseInt(value) == 1);
+                Enviroment.flags.setNegative(Integer.parseInt(value, radix) == 1);
                 continue;
             }
 
-            int address = Integer.parseInt(key);
-            int memoryValue = Integer.parseInt(value);
+            int address = Integer.parseInt(key, radix);
+            int memoryValue = Integer.parseInt(value, radix);
             Enviroment.MEMORY.setContent(address, new MyByte[]{new MyByte(memoryValue)});
         }
     }

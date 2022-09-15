@@ -15,7 +15,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +32,7 @@ public class IntegrationTests {
     @Before
     public void setup() {
         result = new ByteArrayOutputStream();
-        sut = new PrintingMachine(new MIMachine(), new PrintStream(result));
+        sut = new PrintingMachine(new MIMachine(), new PrintStream(result), false);
     }
 
     @Override
