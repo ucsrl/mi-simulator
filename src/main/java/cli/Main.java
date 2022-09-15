@@ -60,8 +60,7 @@ public class Main {
     }
 
     private static void runProgram() {
-//        PrintingMachine machine = new PrintingMachine(new MIMachine(), System.out);
-        IMachine machine = new MIMachine();
+        PrintingMachine machine = new PrintingMachine(new MIMachine(), System.out);
         while (!machine.hasHalted()) {
             machine.executeNext();
         }
