@@ -34,5 +34,8 @@ tasks.register('cli-jar', Jar) {
         attributes["Main-Class"] = "cli.Main"
     }
     archivesBaseName = 'mi-simulator-cli'
+
+    // TODO: make this more specific once we have a clear separation between GUI and CLI
+    from sourceSets.main.runtimeClasspath
     group = 'build'
 }
