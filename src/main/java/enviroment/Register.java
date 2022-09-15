@@ -104,7 +104,9 @@ public class Register {
         for (int i = 0; i < 4; i++) {
             buffer.put((byte) content[i].getContent());
         }
-        this.content = buffer.rewind().getInt();
+        // in Java 1.8 we need the explicit cast because ByteBuffer.rewind() returns "this" as a generic ByteBuffer
+        //noinspection RedundantCast
+        this.content = ((ByteBuffer) buffer.rewind()).getInt();
         if (content.length == 8) {
             Register next = Enviroment.REGISTERS.getRegister((nr + 1) % CONSTANTS.NUMBER_OF_REGISTER);
             next.setContent(new MyByte[]{content[4], content[5], content[6], content[7]});
