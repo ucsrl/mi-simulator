@@ -127,13 +127,13 @@ public class Or extends Command {
         MyByte opcode = null;
         switch (length) {
             case 1:
-                opcode = three ? new MyByte("C4") : new MyByte("BF");
+                opcode = three ? new MyByte("B0") : new MyByte("AD");
                 break;
             case 2:
-                opcode = three ? new MyByte("C5") : new MyByte("C0");
+                opcode = three ? new MyByte("B1") : new MyByte("AE");
                 break;
             case 4:
-                opcode = three ? new MyByte("C6") : new MyByte("C1");
+                opcode = three ? new MyByte("B2") : new MyByte("AF");
                 break;
             default:
                 System.out.println("Fehler beim berechnen des OPCodes");

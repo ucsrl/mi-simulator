@@ -1,0 +1,5 @@
+	SEG
+	JUMP s
+
+s:  OR W I 1, I 1, R0
+end:	HALT
