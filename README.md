@@ -93,3 +93,6 @@ bei einem Programmdurchlauf direkt als Zustandsdatei verwendet werden.
   Der Zustand enthält bereits das kodierte Programm.
   Allerdings unterstützt die Programmlogik des MI-Simulators aktuell noch keine Ausführung ohne ein Programm in
   Textform.
+
+## Bekannte Probleme ##
+* Unter Linux kann es mit bestimmten Window Managern zu dem Problem kommen, dass das MI-Simulator Fenster leer ist bzw. kein Inhalt angezeigt wird. In diesem Fall kann es helfen den Simulator mit `export _JAVA_AWT_WM_NONREPARENTING=1` zu starten.
